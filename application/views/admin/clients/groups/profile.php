@@ -150,6 +150,10 @@ if (total_rows(db_prefix() . 'customfields', ['fieldto' => 'customers', 'active'
                                 for="show_primary_contact"><?= _l('show_primary_contact', _l('invoices') . ', ' . _l('estimates') . ', ' . _l('payments') . ', ' . _l('credit_notes')); ?></label>
                         </div>
                     </div>
+
+
+
+                    <!-- customer profile -->
                     <div
                         class="col-md-<?= ! isset($client) ? 12 : 8; ?>">
                         <?php hooks()->do_action('before_customer_profile_company_field', $client ?? null); ?>
@@ -196,7 +200,7 @@ if (total_rows(db_prefix() . 'customfields', ['fieldto' => 'customers', 'active'
 //     echo render_select_with_input_group('groups_in[]', $groups, ['id', 'name'], 'customer_groups', $selected, '<div class="input-group-btn"><a href="#" class="btn btn-default" data-toggle="modal" data-target="#customer_group_modal"><i class="fa fa-plus"></i></a></div>', ['multiple' => true, 'data-actions-box' => true], [], '', '', false);
 // } else {
 //     echo render_select('groups_in[]', $groups, ['id', 'name'], 'customer_groups', $selected, ['multiple' => true, 'data-actions-box' => true], [], '', '', false);
-// }
+// }  
 // ?>
                         <div class="row">
                              <div
@@ -269,6 +273,12 @@ $selected                                = (isset($client) ? $client->country : 
 echo render_select('country', $countries, ['country_id', ['short_name']], 'clients_country', $selected, ['data-none-selected-text' => _l('dropdown_non_selected_tex')]);
 ?>
                     </div>
+
+
+
+                    
+
+
                 </div>
             </div>
             <?php if (isset($client)) { ?>
@@ -320,6 +330,10 @@ echo render_select('country', $countries, ['country_id', ['short_name']], 'clien
                 </table>
             </div>
             <?php } ?>
+
+
+
+            <!-- billing_and_shipping -->
             <div role="tabpanel" class="tab-pane" id="billing_and_shipping">
                 <div class="row">
                     <div class="col-md-12">
@@ -414,6 +428,11 @@ echo render_select('country', $countries, ['country_id', ['short_name']], 'clien
                     </div>
                 </div>
             </div>
+
+
+
+
+
         </div>
     </div>
     <?= form_close(); ?>

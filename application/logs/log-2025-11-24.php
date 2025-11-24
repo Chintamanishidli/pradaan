@@ -862,3 +862,474 @@ DEBUG - 2025-11-24 08:00:48 --> File loaded: C:\xampp\htdocs\perfex_crm\applicat
 DEBUG - 2025-11-24 08:00:48 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/client.php
 INFO - 2025-11-24 08:00:48 --> Final output sent to browser
 DEBUG - 2025-11-24 08:00:48 --> Total execution time: 0.6653
+INFO - 2025-11-24 06:25:25 --> Config Class Initialized
+INFO - 2025-11-24 06:25:25 --> Hooks Class Initialized
+DEBUG - 2025-11-24 06:25:25 --> UTF-8 Support Enabled
+INFO - 2025-11-24 06:25:25 --> Utf8 Class Initialized
+INFO - 2025-11-24 06:25:25 --> URI Class Initialized
+INFO - 2025-11-24 06:25:25 --> Router Class Initialized
+INFO - 2025-11-24 06:25:25 --> Output Class Initialized
+INFO - 2025-11-24 06:25:25 --> Security Class Initialized
+DEBUG - 2025-11-24 06:25:25 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-11-24 06:25:25 --> CSRF cookie sent
+INFO - 2025-11-24 06:25:25 --> Input Class Initialized
+INFO - 2025-11-24 06:25:25 --> Language Class Initialized
+INFO - 2025-11-24 06:25:25 --> Config Class Initialized
+INFO - 2025-11-24 06:25:25 --> Loader Class Initialized
+INFO - 2025-11-24 06:25:25 --> Helper loaded: files_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: language_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: url_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: file_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: form_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: settings_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: modules_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: core_hooks_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: admin_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: assets_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: user_meta_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: emails_tracking_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: staff_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: countries_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: payment_gateways_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: general_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: misc_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: func_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: gdpr_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: datatables_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: table_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: custom_fields_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: menu_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: template_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: email_templates_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: invoices_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: subscriptions_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: estimates_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: contracts_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: credit_notes_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: proposals_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: projects_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: tasks_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: fields_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: leads_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: tickets_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: relation_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: tags_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: pdf_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: clients_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: database_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: upload_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: sales_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: themes_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: widgets_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: sms_helper
+INFO - 2025-11-24 06:25:25 --> Helper loaded: deprecated_helper
+INFO - 2025-11-24 06:25:26 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-11-24 06:25:26 --> Database Driver Class Initialized
+INFO - 2025-11-24 06:25:26 --> Session: Class initialized using 'database' driver.
+INFO - 2025-11-24 06:25:26 --> User Agent Class Initialized
+INFO - 2025-11-24 06:25:26 --> Image Lib Class Initialized
+DEBUG - 2025-11-24 06:25:26 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-11-24 06:25:26 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-11-24 06:25:26 --> Encryption Class Initialized
+INFO - 2025-11-24 06:25:26 --> Helper loaded: email_helper
+INFO - 2025-11-24 06:25:26 --> Helper loaded: html_helper
+INFO - 2025-11-24 06:25:26 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-11-24 06:25:26 --> App_Model class loaded
+INFO - 2025-11-24 08:25:26 --> Model "Misc_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Roles_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Client_groups_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Statement_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Clients_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Projects_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Staff_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Tasks_model" initialized
+INFO - 2025-11-24 08:25:26 --> Controller Class Initialized
+INFO - 2025-11-24 08:25:26 --> Helper loaded: directory_helper
+INFO - 2025-11-24 08:25:26 --> Model "User_Autologin" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Authentication_model" initialized
+INFO - 2025-11-24 08:25:26 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-11-24 08:25:26 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-11-24 08:25:26 --> Model "Tickets_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Expenses_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Payment_modes_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Invoices_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Credit_notes_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Gdpr_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Leads_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Departments_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Estimates_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Proposals_model" initialized
+INFO - 2025-11-24 08:25:26 --> Model "Currencies_model" initialized
+DEBUG - 2025-11-24 08:25:26 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/head.php
+DEBUG - 2025-11-24 08:25:27 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/tasks/started_timers.php
+DEBUG - 2025-11-24 08:25:27 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/notifications.php
+DEBUG - 2025-11-24 08:25:27 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/header.php
+DEBUG - 2025-11-24 08:25:27 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/setup_menu.php
+DEBUG - 2025-11-24 08:25:27 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/projects/pinned.php
+DEBUG - 2025-11-24 08:25:27 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/aside.php
+ERROR - 2025-11-24 08:25:27 --> Could not find the language line "customer_code"
+ERROR - 2025-11-24 08:25:27 --> Could not find the language line "organization"
+ERROR - 2025-11-24 08:25:27 --> Could not find the language line "branch"
+ERROR - 2025-11-24 08:25:27 --> Severity: Warning --> Undefined variable $s_attrs C:\xampp\htdocs\perfex_crm\application\views\admin\clients\groups\profile.php 226
+DEBUG - 2025-11-24 08:25:27 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/client_group.php
+DEBUG - 2025-11-24 08:25:27 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/groups/profile.php
+DEBUG - 2025-11-24 08:25:27 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/scripts.php
+DEBUG - 2025-11-24 08:25:27 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/client_js.php
+DEBUG - 2025-11-24 08:25:27 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/client.php
+INFO - 2025-11-24 08:25:27 --> Final output sent to browser
+DEBUG - 2025-11-24 08:25:27 --> Total execution time: 2.2768
+INFO - 2025-11-24 06:25:55 --> Config Class Initialized
+INFO - 2025-11-24 06:25:55 --> Hooks Class Initialized
+DEBUG - 2025-11-24 06:25:55 --> UTF-8 Support Enabled
+INFO - 2025-11-24 06:25:55 --> Utf8 Class Initialized
+INFO - 2025-11-24 06:25:55 --> URI Class Initialized
+INFO - 2025-11-24 06:25:55 --> Router Class Initialized
+INFO - 2025-11-24 06:25:55 --> Output Class Initialized
+INFO - 2025-11-24 06:25:55 --> Security Class Initialized
+DEBUG - 2025-11-24 06:25:55 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-11-24 06:25:55 --> CSRF cookie sent
+INFO - 2025-11-24 06:25:55 --> Input Class Initialized
+INFO - 2025-11-24 06:25:55 --> Language Class Initialized
+INFO - 2025-11-24 06:25:55 --> Config Class Initialized
+INFO - 2025-11-24 06:25:55 --> Loader Class Initialized
+INFO - 2025-11-24 06:25:55 --> Helper loaded: files_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: language_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: url_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: file_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: form_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: settings_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: modules_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: core_hooks_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: admin_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: assets_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: user_meta_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: emails_tracking_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: staff_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: countries_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: payment_gateways_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: general_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: misc_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: func_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: gdpr_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: datatables_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: table_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: custom_fields_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: menu_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: template_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: email_templates_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: invoices_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: subscriptions_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: estimates_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: contracts_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: credit_notes_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: proposals_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: projects_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: tasks_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: fields_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: leads_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: tickets_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: relation_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: tags_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: pdf_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: clients_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: database_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: upload_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: sales_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: themes_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: widgets_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: sms_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: deprecated_helper
+INFO - 2025-11-24 06:25:55 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-11-24 06:25:55 --> Database Driver Class Initialized
+INFO - 2025-11-24 06:25:55 --> Session: Class initialized using 'database' driver.
+INFO - 2025-11-24 06:25:55 --> User Agent Class Initialized
+INFO - 2025-11-24 06:25:55 --> Image Lib Class Initialized
+DEBUG - 2025-11-24 06:25:55 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-11-24 06:25:55 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-11-24 06:25:55 --> Encryption Class Initialized
+INFO - 2025-11-24 06:25:55 --> Helper loaded: email_helper
+INFO - 2025-11-24 06:25:55 --> Helper loaded: html_helper
+INFO - 2025-11-24 06:25:55 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-11-24 06:25:56 --> App_Model class loaded
+INFO - 2025-11-24 08:25:56 --> Model "Misc_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Roles_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Client_groups_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Statement_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Clients_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Projects_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Staff_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Tasks_model" initialized
+INFO - 2025-11-24 08:25:56 --> Controller Class Initialized
+INFO - 2025-11-24 08:25:56 --> Helper loaded: directory_helper
+INFO - 2025-11-24 08:25:56 --> Model "User_Autologin" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Authentication_model" initialized
+INFO - 2025-11-24 08:25:56 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-11-24 08:25:56 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-11-24 08:25:56 --> Model "Tickets_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Expenses_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Payment_modes_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Invoices_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Credit_notes_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Gdpr_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Leads_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Departments_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Estimates_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Proposals_model" initialized
+INFO - 2025-11-24 08:25:56 --> Model "Currencies_model" initialized
+DEBUG - 2025-11-24 08:25:56 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/head.php
+DEBUG - 2025-11-24 08:25:56 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/tasks/started_timers.php
+DEBUG - 2025-11-24 08:25:56 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/notifications.php
+DEBUG - 2025-11-24 08:25:56 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/header.php
+DEBUG - 2025-11-24 08:25:56 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/setup_menu.php
+DEBUG - 2025-11-24 08:25:56 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/projects/pinned.php
+DEBUG - 2025-11-24 08:25:56 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/aside.php
+ERROR - 2025-11-24 08:25:56 --> Could not find the language line "customer_code"
+ERROR - 2025-11-24 08:25:56 --> Could not find the language line "organization"
+ERROR - 2025-11-24 08:25:56 --> Could not find the language line "branch"
+ERROR - 2025-11-24 08:25:57 --> Severity: Warning --> Undefined variable $s_attrs C:\xampp\htdocs\perfex_crm\application\views\admin\clients\groups\profile.php 226
+DEBUG - 2025-11-24 08:25:57 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/client_group.php
+DEBUG - 2025-11-24 08:25:57 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/groups/profile.php
+DEBUG - 2025-11-24 08:25:57 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/scripts.php
+DEBUG - 2025-11-24 08:25:57 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/client_js.php
+DEBUG - 2025-11-24 08:25:57 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/client.php
+INFO - 2025-11-24 08:25:57 --> Final output sent to browser
+DEBUG - 2025-11-24 08:25:57 --> Total execution time: 1.9754
+INFO - 2025-11-24 06:26:58 --> Config Class Initialized
+INFO - 2025-11-24 06:26:58 --> Hooks Class Initialized
+DEBUG - 2025-11-24 06:26:58 --> UTF-8 Support Enabled
+INFO - 2025-11-24 06:26:58 --> Utf8 Class Initialized
+INFO - 2025-11-24 06:26:58 --> URI Class Initialized
+INFO - 2025-11-24 06:26:58 --> Router Class Initialized
+INFO - 2025-11-24 06:26:58 --> Output Class Initialized
+INFO - 2025-11-24 06:26:58 --> Security Class Initialized
+DEBUG - 2025-11-24 06:26:58 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-11-24 06:26:58 --> CSRF cookie sent
+INFO - 2025-11-24 06:26:58 --> Input Class Initialized
+INFO - 2025-11-24 06:26:58 --> Language Class Initialized
+INFO - 2025-11-24 06:26:58 --> Config Class Initialized
+INFO - 2025-11-24 06:26:58 --> Loader Class Initialized
+INFO - 2025-11-24 06:26:58 --> Helper loaded: files_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: language_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: url_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: file_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: form_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: settings_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: modules_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: core_hooks_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: admin_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: assets_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: user_meta_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: emails_tracking_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: staff_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: countries_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: payment_gateways_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: general_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: misc_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: func_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: gdpr_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: datatables_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: table_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: custom_fields_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: menu_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: template_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: email_templates_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: invoices_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: subscriptions_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: estimates_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: contracts_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: credit_notes_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: proposals_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: projects_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: tasks_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: fields_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: leads_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: tickets_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: relation_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: tags_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: pdf_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: clients_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: database_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: upload_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: sales_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: themes_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: widgets_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: sms_helper
+INFO - 2025-11-24 06:26:58 --> Helper loaded: deprecated_helper
+INFO - 2025-11-24 06:26:58 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-11-24 06:26:58 --> Database Driver Class Initialized
+INFO - 2025-11-24 06:26:58 --> Session: Class initialized using 'database' driver.
+INFO - 2025-11-24 06:26:58 --> User Agent Class Initialized
+INFO - 2025-11-24 06:26:58 --> Image Lib Class Initialized
+DEBUG - 2025-11-24 06:26:58 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-11-24 06:26:58 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-11-24 06:26:58 --> Encryption Class Initialized
+INFO - 2025-11-24 06:26:59 --> Helper loaded: email_helper
+INFO - 2025-11-24 06:26:59 --> Helper loaded: html_helper
+INFO - 2025-11-24 06:26:59 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-11-24 06:26:59 --> App_Model class loaded
+INFO - 2025-11-24 08:26:59 --> Model "Misc_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Roles_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Client_groups_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Statement_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Clients_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Projects_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Staff_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Tasks_model" initialized
+INFO - 2025-11-24 08:26:59 --> Controller Class Initialized
+INFO - 2025-11-24 08:26:59 --> Helper loaded: directory_helper
+INFO - 2025-11-24 08:26:59 --> Model "User_Autologin" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Authentication_model" initialized
+INFO - 2025-11-24 08:26:59 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-11-24 08:26:59 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-11-24 08:26:59 --> Model "Tickets_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Expenses_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Payment_modes_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Invoices_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Credit_notes_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Gdpr_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Leads_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Departments_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Estimates_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Proposals_model" initialized
+INFO - 2025-11-24 08:26:59 --> Model "Currencies_model" initialized
+DEBUG - 2025-11-24 08:26:59 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/head.php
+DEBUG - 2025-11-24 08:26:59 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/tasks/started_timers.php
+DEBUG - 2025-11-24 08:26:59 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/notifications.php
+DEBUG - 2025-11-24 08:26:59 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/header.php
+DEBUG - 2025-11-24 08:26:59 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/setup_menu.php
+DEBUG - 2025-11-24 08:26:59 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/projects/pinned.php
+DEBUG - 2025-11-24 08:26:59 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/aside.php
+ERROR - 2025-11-24 08:26:59 --> Could not find the language line "customer_code"
+ERROR - 2025-11-24 08:26:59 --> Could not find the language line "organization"
+ERROR - 2025-11-24 08:26:59 --> Could not find the language line "branch"
+ERROR - 2025-11-24 08:27:00 --> Severity: Warning --> Undefined variable $s_attrs C:\xampp\htdocs\perfex_crm\application\views\admin\clients\groups\profile.php 226
+DEBUG - 2025-11-24 08:27:00 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/client_group.php
+DEBUG - 2025-11-24 08:27:00 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/groups/profile.php
+DEBUG - 2025-11-24 08:27:00 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/scripts.php
+DEBUG - 2025-11-24 08:27:00 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/client_js.php
+DEBUG - 2025-11-24 08:27:00 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/client.php
+INFO - 2025-11-24 08:27:00 --> Final output sent to browser
+DEBUG - 2025-11-24 08:27:00 --> Total execution time: 2.0643
+INFO - 2025-11-24 06:38:52 --> Config Class Initialized
+INFO - 2025-11-24 06:38:52 --> Hooks Class Initialized
+DEBUG - 2025-11-24 06:38:52 --> UTF-8 Support Enabled
+INFO - 2025-11-24 06:38:52 --> Utf8 Class Initialized
+INFO - 2025-11-24 06:38:52 --> URI Class Initialized
+INFO - 2025-11-24 06:38:52 --> Router Class Initialized
+INFO - 2025-11-24 06:38:52 --> Output Class Initialized
+INFO - 2025-11-24 06:38:52 --> Security Class Initialized
+DEBUG - 2025-11-24 06:38:52 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-11-24 06:38:52 --> CSRF cookie sent
+INFO - 2025-11-24 06:38:52 --> Input Class Initialized
+INFO - 2025-11-24 06:38:52 --> Language Class Initialized
+INFO - 2025-11-24 06:38:52 --> Config Class Initialized
+INFO - 2025-11-24 06:38:52 --> Loader Class Initialized
+INFO - 2025-11-24 06:38:52 --> Helper loaded: files_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: language_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: url_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: file_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: form_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: settings_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: modules_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: core_hooks_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: admin_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: assets_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: user_meta_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: emails_tracking_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: staff_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: countries_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: payment_gateways_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: general_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: misc_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: func_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: gdpr_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: datatables_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: table_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: custom_fields_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: menu_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: template_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: email_templates_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: invoices_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: subscriptions_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: estimates_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: contracts_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: credit_notes_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: proposals_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: projects_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: tasks_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: fields_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: leads_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: tickets_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: relation_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: tags_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: pdf_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: clients_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: database_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: upload_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: sales_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: themes_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: widgets_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: sms_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: deprecated_helper
+INFO - 2025-11-24 06:38:52 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-11-24 06:38:52 --> Database Driver Class Initialized
+INFO - 2025-11-24 06:38:52 --> Session: Class initialized using 'database' driver.
+INFO - 2025-11-24 06:38:52 --> User Agent Class Initialized
+INFO - 2025-11-24 06:38:52 --> Image Lib Class Initialized
+DEBUG - 2025-11-24 06:38:52 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-11-24 06:38:52 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-11-24 06:38:52 --> Encryption Class Initialized
+INFO - 2025-11-24 06:38:52 --> Helper loaded: email_helper
+INFO - 2025-11-24 06:38:52 --> Helper loaded: html_helper
+INFO - 2025-11-24 06:38:52 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-11-24 06:38:52 --> App_Model class loaded
+INFO - 2025-11-24 08:38:52 --> Model "Misc_model" initialized
+INFO - 2025-11-24 08:38:52 --> Model "Roles_model" initialized
+INFO - 2025-11-24 08:38:52 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-11-24 08:38:52 --> Model "Client_groups_model" initialized
+INFO - 2025-11-24 08:38:52 --> Model "Statement_model" initialized
+INFO - 2025-11-24 08:38:52 --> Model "Clients_model" initialized
+INFO - 2025-11-24 08:38:53 --> Model "Projects_model" initialized
+INFO - 2025-11-24 08:38:53 --> Model "Staff_model" initialized
+INFO - 2025-11-24 08:38:53 --> Model "Tasks_model" initialized
+INFO - 2025-11-24 08:38:53 --> Controller Class Initialized
+INFO - 2025-11-24 08:38:53 --> Helper loaded: directory_helper
+INFO - 2025-11-24 08:38:53 --> Model "User_Autologin" initialized
+INFO - 2025-11-24 08:38:53 --> Model "Authentication_model" initialized
+INFO - 2025-11-24 08:38:53 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-11-24 08:38:53 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-11-24 08:38:53 --> Model "Tickets_model" initialized
+INFO - 2025-11-24 08:38:53 --> Model "Expenses_model" initialized
+INFO - 2025-11-24 08:38:53 --> Model "Payment_modes_model" initialized
+INFO - 2025-11-24 08:38:53 --> Model "Invoices_model" initialized
+INFO - 2025-11-24 08:38:53 --> Model "Credit_notes_model" initialized
+INFO - 2025-11-24 08:38:53 --> Model "Gdpr_model" initialized
+INFO - 2025-11-24 08:38:53 --> Model "Leads_model" initialized
+INFO - 2025-11-24 08:38:53 --> Model "Departments_model" initialized
+INFO - 2025-11-24 08:38:53 --> Model "Estimates_model" initialized
+INFO - 2025-11-24 08:38:53 --> Model "Proposals_model" initialized
+INFO - 2025-11-24 08:38:53 --> Model "Currencies_model" initialized
+DEBUG - 2025-11-24 08:38:53 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/head.php
+DEBUG - 2025-11-24 08:38:53 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/tasks/started_timers.php
+DEBUG - 2025-11-24 08:38:53 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/notifications.php
+DEBUG - 2025-11-24 08:38:53 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/header.php
+DEBUG - 2025-11-24 08:38:53 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/setup_menu.php
+DEBUG - 2025-11-24 08:38:53 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/projects/pinned.php
+DEBUG - 2025-11-24 08:38:53 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/aside.php
+ERROR - 2025-11-24 08:38:53 --> Could not find the language line "customer_code"
+ERROR - 2025-11-24 08:38:53 --> Could not find the language line "organization"
+ERROR - 2025-11-24 08:38:53 --> Could not find the language line "branch"
+DEBUG - 2025-11-24 08:38:54 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/client_group.php
+DEBUG - 2025-11-24 08:38:54 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/groups/profile.php
+DEBUG - 2025-11-24 08:38:54 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/scripts.php
+DEBUG - 2025-11-24 08:38:54 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/client_js.php
+DEBUG - 2025-11-24 08:38:54 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/client.php
+INFO - 2025-11-24 08:38:54 --> Final output sent to browser
+DEBUG - 2025-11-24 08:38:54 --> Total execution time: 2.5485
