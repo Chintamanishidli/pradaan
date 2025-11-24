@@ -361,6 +361,14 @@ function app_init_customer_profile_tabs()
         'position' => 95,
         'badge'    => [],
     ]);
+
+    $CI->app_tabs->add_customer_profile_tab('supplyer_entery', [
+        'name'     => _l('supplyer_entery'),
+        'icon'     => 'fa-solid fa-truck-field',
+        'view'     => 'admin/clients/groups/supplyer_entery',
+        'position' => 100,
+        'badge'    => [],
+    ]);
 }
 
 /**

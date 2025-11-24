@@ -153,80 +153,83 @@ if (total_rows(db_prefix() . 'customfields', ['fieldto' => 'customers', 'active'
 
 
 
-                    <!-- customer profile -->
-                    <div
-                        class="col-md-<?= ! isset($client) ? 12 : 8; ?>">
-                        <?php hooks()->do_action('before_customer_profile_company_field', $client ?? null); ?>
-                        <?php $value = (isset($client) ? $client->company : ''); ?>
-                        <?php $attrs = (isset($client) ? [] : ['autofocus' => true]); ?>
-                        <?= render_input('custemer_name', 'Custemer name', $value, 'text', $attrs); ?>
-                        <div id="company_exists_info" class="hide"></div>
-                        <?php hooks()->do_action('after_customer_profile_company_field', $client ?? null); ?>
-                        <?php if (get_option('company_requires_vat_number_field') == 1) {
-                            $value = (isset($client) ? $client->gst : '');
-                            echo render_input('gst', 'GST number', $value);
-                        } ?>
-                        <?php hooks()->do_action('before_customer_profile_phone_field', $client ?? null); ?>
-                        <?php $value = (isset($client) ? $client->phonenumber : ''); ?>
-                        <?= render_input('phonenumber', 'client_phonenumber', $value); ?>
-                        <?php hooks()->do_action('after_customer_profile_company_phone', $client ?? null); ?>
-                        <?php if ((isset($client) && empty($client->website)) || ! isset($client)) {
-                            $value = (isset($client) ? $client->website : '');
-                            echo render_input('website', 'client_website', $value);
-                        } else { ?>
-                        <div class="form-group">
-                            <label
-                                for="website"><?= _l('client_website'); ?></label>
-                            <div class="input-group">
-                                <input type="text" name="website" id="website"
-                                    value="<?= e($client->website); ?>"
-                                    class="form-control">
-                                <span class="input-group-btn">
-                                    <a href="<?= e(maybe_add_http($client->website)); ?>"
-                                        class="btn btn-default" target="_blank" tabindex="-1">
-                                        <i class="fa fa-globe"></i></a>
-                                </span>
-
-                            </div>
+             <!-- customer profile -->
+            <div class="col-md-<?= ! isset($client) ? 12 : 8; ?>">
+                        <div class="col-md-4">
+                            <?php hooks()->do_action('before_customer_profile_company_field', $client ?? null); ?>
+                            <?php $value = (isset($client) ? $client->company : ''); ?>
+                            <?php $attrs = (isset($client) ? [] : ['autofocus' => true]); ?>
+                            <?= render_input('custemer_name', 'Custemer name', $value, 'text', $attrs); ?>
                         </div>
-                        <?php }
-                        $selected = [];
-// if (isset($customer_groups)) {
-//     foreach ($customer_groups as $group) {
-//         array_push($selected, $group['groupid']);
-//     }
-// }
-// if (is_admin() || get_option('staff_members_create_inline_customer_groups') == '1') {
-//     echo render_select_with_input_group('groups_in[]', $groups, ['id', 'name'], 'customer_groups', $selected, '<div class="input-group-btn"><a href="#" class="btn btn-default" data-toggle="modal" data-target="#customer_group_modal"><i class="fa fa-plus"></i></a></div>', ['multiple' => true, 'data-actions-box' => true], [], '', '', false);
-// } else {
-//     echo render_select('groups_in[]', $groups, ['id', 'name'], 'customer_groups', $selected, ['multiple' => true, 'data-actions-box' => true], [], '', '', false);
-// }  
-// ?>
+                        <div class="col-md-4">
+                            <?php hooks()->do_action('before_customer_profile_company_field', $client ?? null); ?>
+                            <?php $value = (isset($client) ? $client->company : ''); ?>
+                            <?= render_input('custemer_lastname', 'Custemer lastname', $value, 'text', $attrs); ?>
+                        </div>
+                        <div class="col-md-4">
+                            <div id="company_exists_info" class="hide"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <?php hooks()->do_action('after_customer_profile_company_field', $client ?? null); ?>
+                            <?php if (get_option('company_requires_vat_number_field') == 1) {
+                                $value = (isset($client) ? $client->gst : '');
+                                echo render_input('gst', 'GST number', $value);
+                            } ?>
+                        </div>
+                        <div class="col-md-4">
+                            <?php hooks()->do_action('before_customer_profile_phone_field', $client ?? null); ?>
+                            <?php $value = (isset($client) ? $client->phonenumber : ''); ?>
+                            <?= render_input('phonenumber', 'client_phonenumber', $value); ?>
+                        <?php hooks()->do_action('after_customer_profile_company_phone', $client ?? null); ?>
+                        </div>
+                        <div class="col-md-4">
+                            <?php if ((isset($client) && empty($client->website)) || ! isset($client)) {
+                                $value = (isset($client) ? $client->website : '');
+                                echo render_input('website', 'client_website', $value);
+                            } else { ?>
+                            <div class="form-group">
+                                <label
+                                    for="website"><?= _l('client_website'); ?></label>
+                                <div class="input-group">
+                                    <input type="text" name="website" id="website"
+                                        value="<?= e($client->website); ?>"
+                                        class="form-control">
+                                    <span class="input-group-btn">
+                                        <a href="<?= e(maybe_add_http($client->website)); ?>"
+                                            class="btn btn-default" target="_blank" tabindex="-1">
+                                            <i class="fa fa-globe"></i></a>
+                                    </span>
+
+                                </div>
+                            </div>
+                            <?php } ?>
+                        </div>
                         <div class="row">
-                             <div
-                                 class="col-md-<?= ! is_language_disabled() ? 6 : 12; ?>">
+                             <!-- <div
+                                 class="col-md-<?= ! is_language_disabled() ? 6 : 12; ?>"> -->
+                                 <div class="col-md-4">
                                  <i class="fa-regular fa-circle-question pull-left tw-mt-0.5 tw-mr-1"
                                      data-toggle="tooltip"
                                      data-title="<?= _l('customer_currency_change_notice'); ?>"></i>
                                  <?php
-// $s_attrs  = ['data-none-selected-text' => _l('system_default_string')];
-// $selected = '';
-// if (isset($client) && client_have_transactions($client->userid)) {
-//     $s_attrs['disabled'] = true;
-// }
+                                $s_attrs  = ['data-none-selected-text' => _l('system_default_string')];
+                                $selected = '';
+                                if (isset($client) && client_have_transactions($client->userid)) {
+                                    $s_attrs['disabled'] = true;
+                                }
 
-foreach ($currencies as $currency) {
-    if (isset($client)) {
-        if ($currency['id'] == $client->default_currency) {
-            $selected = $currency['id'];
-        }
-    }
-}
-// Do not remove the currency field from the customer profile!
-echo render_select('default_currency', $currencies, ['id', 'name', 'symbol'], 'invoice_add_edit_currency', $selected, $s_attrs);
-?>
+                                foreach ($currencies as $currency) {
+                                    if (isset($client)) {
+                                        if ($currency['id'] == $client->default_currency) {
+                                            $selected = $currency['id'];
+                                        }
+                                    }
+                                }
+                    // Do not remove the currency field from the customer profile!
+                    echo render_select('default_currency', $currencies, ['id', 'name', 'symbol'], 'invoice_add_edit_currency', $selected, $s_attrs);
+                    ?>
                             </div>
-                            <?php if (! is_language_disabled()) { ?>
+                            <!-- <?php if (! is_language_disabled()) { ?>
                             <div class="col-md-6">
                                 <div class="form-group select-placeholder">
                                     <label for="default_language"
@@ -254,24 +257,35 @@ echo render_select('default_currency', $currencies, ['id', 'name', 'symbol'], 'i
                                     </select>
                                 </div>
                             </div>
-                            <?php } ?>
+                            <?php } ?> -->
                         </div>
 
                         <hr />
-
-                        <?php $value = (isset($client) ? $client->address : ''); ?>
-                        <?= render_textarea('address', 'client_address', $value); ?>
+                        
+                        <div class="col-md-12">
+                                <?php $value = (isset($client) ? $client->address : ''); ?>
+                                <?= render_textarea('address', 'client_address', $value); ?>
+                        </div>
+                        <div class="col-md-4">
                         <?php $value = (isset($client) ? $client->city : ''); ?>
                         <?= render_input('city', 'client_city', $value); ?>
+                        </div>
+
+                        <div class="col-md-4">
                         <?php $value = (isset($client) ? $client->state : ''); ?>
                         <?= render_input('state', 'client_state', $value); ?>
+                        </div>
+                        <div class="col-md-4">
                         <?php $value = (isset($client) ? $client->zip : ''); ?>
                         <?= render_input('zip', 'client_postal_code', $value); ?>
+                        </div>
+                        <div class="col-md-4">
                         <?php $countries = get_all_countries();
-$customer_default_country                = get_option('customer_default_country');
-$selected                                = (isset($client) ? $client->country : $customer_default_country);
-echo render_select('country', $countries, ['country_id', ['short_name']], 'clients_country', $selected, ['data-none-selected-text' => _l('dropdown_non_selected_tex')]);
-?>
+                                $customer_default_country                = get_option('customer_default_country');
+                                $selected                                = (isset($client) ? $client->country : $customer_default_country);
+                                echo render_select('country', $countries, ['country_id', ['short_name']], 'clients_country', $selected, ['data-none-selected-text' => _l('dropdown_non_selected_tex')]);
+                                ?>
+                        </div>
                     </div>
 
 

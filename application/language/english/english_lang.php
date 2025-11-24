@@ -4081,3 +4081,5 @@ $lang['csv_export_twelve_months'] = 'Last 12 Months';
 $lang['csv_export_from_date'] = 'From Date';
 $lang['csv_export_to_date'] = 'To Date';
 $lang['csv_export_button'] = 'Export';
+$lang['supplyer_entery'] = 'Supplier Entry';
+
