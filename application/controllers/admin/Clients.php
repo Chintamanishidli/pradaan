@@ -1085,4 +1085,14 @@ class Clients extends AdminController
 
         echo json_encode($viewData);
     }
+
+
+    public function get_branches_by_org($organization_id)
+{
+    $this->load->model('Branch_model');
+    $branches = $this->Branch_model->get_branches_by_org($organization_id);
+
+    echo json_encode($branches);
+}
+
 }

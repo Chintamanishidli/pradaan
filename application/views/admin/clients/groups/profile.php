@@ -32,12 +32,31 @@ if (total_rows(db_prefix() . 'customfields', ['fieldto' => 'customers', 'active'
                         </a>
                     </li>
                     <?php } ?>
+
+
+                        <li role="presentation">
+        <a href="#gst_tab" aria-controls="gst_tab" role="tab" data-toggle="tab">
+            <?= _l('gst_number'); ?>
+        </a>
+    </li>
+
+    <li role="presentation">
+        <a href="#payment_tab" aria-controls="payment_tab" role="tab" data-toggle="tab">
+            <?= _l('payment_details'); ?>
+        </a>
+    </li>
+
+                    
+
+                    
+                    
                     <li role="presentation">
                         <a href="#billing_and_shipping" aria-controls="billing_and_shipping" role="tab"
                             data-toggle="tab">
                             <?= _l('billing_shipping'); ?>
                         </a>
                     </li>
+                    
                     <?php hooks()->do_action('after_customer_billing_and_shipping_tab', $client ?? false); ?>
                     <?php if (isset($client)) { ?>
                     <li role="presentation">
@@ -55,6 +74,55 @@ if (total_rows(db_prefix() . 'customfields', ['fieldto' => 'customers', 'active'
             </div>
         </div>
         <div class="tab-content mtop15">
+
+
+<div role="tabpanel" class="tab-pane" id="gst_tab">
+
+    <div class="col-md-4">
+        <?= render_input('gst_no', 'GST No.', isset($client) ? $client->gst_no : '', 'text'); ?>
+    </div>
+
+    <div class="col-md-4">
+        <?= render_input('pan_no', 'PAN No.', isset($client) ? $client->pan_no : '', 'text'); ?>
+    </div>
+
+    <div class="col-md-4">
+        <?= render_input('aadhar_no', 'Aadhar No.', isset($client) ? $client->aadhar_no : '', 'text'); ?>
+    </div>
+
+    <div class="col-md-4">
+        <?= render_input('gstin_status', 'GSTIN Status', isset($client) ? $client->gstin_status : '', 'text'); ?>
+    </div>
+
+    <div class="col-md-4">
+        <?= render_input('taxpayer_type', 'Taxpayer Type', isset($client) ? $client->taxpayer_type : '', 'text'); ?>
+    </div>
+
+</div>
+
+
+<div role="tabpanel" class="tab-pane" id="payment_tab">
+
+    <div class="col-md-4">
+        <?= render_input('credit_limit', 'Credit Limit', isset($client) ? $client->credit_limit : '', 'text'); ?>
+    </div>
+
+    <div class="col-md-4">
+        <?= render_input('credit_limit_amount', 'Credit Limit Amount', isset($client) ? $client->credit_limit_amount : '', 'text'); ?>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
             <?php hooks()->do_action('after_custom_profile_tab_content', $client ?? false); ?>
             <?php if ($customer_custom_fields) { ?>
             <div role="tabpanel"
@@ -87,12 +155,12 @@ if (total_rows(db_prefix() . 'customfields', ['fieldto' => 'customers', 'active'
                         <?php hooks()->do_action('before_customer_profile_company_field', $client ?? null); ?>
                         <?php $value = (isset($client) ? $client->company : ''); ?>
                         <?php $attrs = (isset($client) ? [] : ['autofocus' => true]); ?>
-                        <?= render_input('company', 'client_company', $value, 'text', $attrs); ?>
+                        <?= render_input('custemer_name', 'Custemer name', $value, 'text', $attrs); ?>
                         <div id="company_exists_info" class="hide"></div>
                         <?php hooks()->do_action('after_customer_profile_company_field', $client ?? null); ?>
                         <?php if (get_option('company_requires_vat_number_field') == 1) {
-                            $value = (isset($client) ? $client->vat : '');
-                            echo render_input('vat', 'client_vat_number', $value);
+                            $value = (isset($client) ? $client->gst : '');
+                            echo render_input('gst', 'GST number', $value);
                         } ?>
                         <?php hooks()->do_action('before_customer_profile_phone_field', $client ?? null); ?>
                         <?php $value = (isset($client) ? $client->phonenumber : ''); ?>
@@ -119,29 +187,29 @@ if (total_rows(db_prefix() . 'customfields', ['fieldto' => 'customers', 'active'
                         </div>
                         <?php }
                         $selected = [];
-if (isset($customer_groups)) {
-    foreach ($customer_groups as $group) {
-        array_push($selected, $group['groupid']);
-    }
-}
-if (is_admin() || get_option('staff_members_create_inline_customer_groups') == '1') {
-    echo render_select_with_input_group('groups_in[]', $groups, ['id', 'name'], 'customer_groups', $selected, '<div class="input-group-btn"><a href="#" class="btn btn-default" data-toggle="modal" data-target="#customer_group_modal"><i class="fa fa-plus"></i></a></div>', ['multiple' => true, 'data-actions-box' => true], [], '', '', false);
-} else {
-    echo render_select('groups_in[]', $groups, ['id', 'name'], 'customer_groups', $selected, ['multiple' => true, 'data-actions-box' => true], [], '', '', false);
-}
-?>
+// if (isset($customer_groups)) {
+//     foreach ($customer_groups as $group) {
+//         array_push($selected, $group['groupid']);
+//     }
+// }
+// if (is_admin() || get_option('staff_members_create_inline_customer_groups') == '1') {
+//     echo render_select_with_input_group('groups_in[]', $groups, ['id', 'name'], 'customer_groups', $selected, '<div class="input-group-btn"><a href="#" class="btn btn-default" data-toggle="modal" data-target="#customer_group_modal"><i class="fa fa-plus"></i></a></div>', ['multiple' => true, 'data-actions-box' => true], [], '', '', false);
+// } else {
+//     echo render_select('groups_in[]', $groups, ['id', 'name'], 'customer_groups', $selected, ['multiple' => true, 'data-actions-box' => true], [], '', '', false);
+// }
+// ?>
                         <div class="row">
-                            <div
-                                class="col-md-<?= ! is_language_disabled() ? 6 : 12; ?>">
-                                <i class="fa-regular fa-circle-question pull-left tw-mt-0.5 tw-mr-1"
-                                    data-toggle="tooltip"
-                                    data-title="<?= _l('customer_currency_change_notice'); ?>"></i>
-                                <?php
-$s_attrs  = ['data-none-selected-text' => _l('system_default_string')];
-$selected = '';
-if (isset($client) && client_have_transactions($client->userid)) {
-    $s_attrs['disabled'] = true;
-}
+                             <div
+                                 class="col-md-<?= ! is_language_disabled() ? 6 : 12; ?>">
+                                 <i class="fa-regular fa-circle-question pull-left tw-mt-0.5 tw-mr-1"
+                                     data-toggle="tooltip"
+                                     data-title="<?= _l('customer_currency_change_notice'); ?>"></i>
+                                 <?php
+// $s_attrs  = ['data-none-selected-text' => _l('system_default_string')];
+// $selected = '';
+// if (isset($client) && client_have_transactions($client->userid)) {
+//     $s_attrs['disabled'] = true;
+// }
 
 foreach ($currencies as $currency) {
     if (isset($client)) {
@@ -266,6 +334,14 @@ echo render_select('country', $countries, ['country_id', ['short_name']], 'clien
                                     </a>
                                 </h4>
 
+
+                                <?php $value = (isset($client) ? $client->mobile_number : ''); ?>
+<?= render_input('mobile_number', 'Mobile number', $value, 'text', ['placeholder' => 'Enter mobile number']); ?>
+
+<?php $value = (isset($client) ? $client->email_address : ''); ?>
+<?= render_input('email_address', 'Email address', $value, 'email', ['placeholder' => 'Enter email address']); ?>
+
+                               
                                 <?php $value = (isset($client) ? $client->billing_street : ''); ?>
                                 <?= render_textarea('billing_street', 'billing_street', $value); ?>
                                 <?php $value = (isset($client) ? $client->billing_city : ''); ?>
@@ -291,6 +367,13 @@ echo render_select('country', $countries, ['country_id', ['short_name']], 'clien
                                         <?= _l('customer_billing_copy'); ?>
                                     </a>
                                 </h4>
+                                
+<?php $value = (isset($client) ? $client->mobile_number : ''); ?>
+<?= render_input('mobile_number_shipping', 'Mobile number', $value, 'text', ['placeholder' => 'Enter mobile number']); ?>
+
+<?php $value = (isset($client) ? $client->email_address : ''); ?>
+<?= render_input('email_address_shipping', 'Email address', $value, 'email', ['placeholder' => 'Enter email address']); ?>
+
 
                                 <?php $value = (isset($client) ? $client->shipping_street : ''); ?>
                                 <?= render_textarea('shipping_street', 'shipping_street', $value); ?>

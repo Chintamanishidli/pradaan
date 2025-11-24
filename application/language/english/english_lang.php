@@ -1366,6 +1366,12 @@ $lang['is_invoiced_estimate_delete_error'] = 'This estimate is invoiced. You can
 # Customers & Invoices / Estimates
 $lang['ship_to']                            = 'Ship to';
 $lang['customer_profile_details']           = 'Customer Details';
+
+
+$lang['Customer_Adress']                     = 'Customer Adress';
+$lang['gst_number']                          = 'GST Number';
+$lang['payment_details']                  = 'Payment Details';
+
 $lang['billing_shipping']                   = 'Billing & Shipping';
 $lang['billing_address']                    = 'Billing Address';
 $lang['shipping_address']                   = 'Shipping Address';
