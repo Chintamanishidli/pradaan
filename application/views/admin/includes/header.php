@@ -1,4 +1,18 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
+
+<script src="<?= base_url('assets/plugins/jquery/jquery.min.js'); ?>"></script>
+<script>
+    // Ensure jQuery is available globally
+    if (typeof jQuery === 'undefined') {
+        console.error('jQuery failed to load!');
+    } else {
+        // Set up noConflict if needed
+        var $jq = jQuery.noConflict();
+        // Make both jQuery and $ available
+        window.jQuery = window.$ = $jq;
+    }
+</script>
+
 <div id="header">
     <button type="button"
         class="hide-menu tw-inline-flex tw-bg-transparent tw-border-0 tw-p-1 tw-mt-4 hover:tw-bg-neutral-600/10 tw-text-neutral-600 hover:tw-text-neutral-800 focus:tw-text-neutral-800 focus:tw-outline-none tw-rounded-md tw-mx-4 ltr:md:tw-ml-4 rtl:md:tw-mr-4 ltr:tw-float-left  rtl:tw-float-right">

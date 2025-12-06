@@ -159,12 +159,12 @@ if (total_rows(db_prefix() . 'customfields', ['fieldto' => 'customers', 'active'
                             <?php hooks()->do_action('before_customer_profile_company_field', $client ?? null); ?>
                             <?php $value = (isset($client) ? $client->company : ''); ?>
                             <?php $attrs = (isset($client) ? [] : ['autofocus' => true]); ?>
-                            <?= render_input('custemer_name', 'Custemer name', $value, 'text', $attrs); ?>
+                            <?= render_input('customer_name', 'Customer name', $value, 'text', $attrs); ?>
                         </div>
                         <div class="col-md-4">
                             <?php hooks()->do_action('before_customer_profile_company_field', $client ?? null); ?>
                             <?php $value = (isset($client) ? $client->company : ''); ?>
-                            <?= render_input('custemer_lastname', 'Custemer lastname', $value, 'text', $attrs); ?>
+                            <?= render_input('customer_lastname', 'Customer lastname', $value, 'text', $attrs); ?>
                         </div>
                         <div class="col-md-4">
                             <div id="company_exists_info" class="hide"></div>

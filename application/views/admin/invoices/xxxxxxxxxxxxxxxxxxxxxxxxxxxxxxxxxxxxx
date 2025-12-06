@@ -410,72 +410,6 @@
 
                 <hr class="hr-panel-separator" />
 
-<?php if (isset($client)) { ?>
-<h4 class="customer-profile-group-heading">
-    <?= _l('client_add_edit_profile'); ?>
-</h4>
-<?php } ?>
-
-<div class="row">
-    <?= form_open($this->uri->uri_string(), ['class' => 'client-form', 'autocomplete' => 'off']); ?>
-    <div class="additional"></div>
-    <div class="col-md-12">
-        <div class="horizontal-scrollable-tabs panel-full-width-tabs">
-            <div class="scroller arrow-left"><i class="fa fa-angle-left"></i></div>
-            <div class="scroller arrow-right"><i class="fa fa-angle-right"></i></div>
-            <div class="horizontal-tabs">
-                <ul class="nav nav-tabs customer-profile-tabs nav-tabs-horizontal" role="tablist">
-                    
-                    <li role="presentation" class="active"> <!-- Changed: Always active -->
-                        <a href="#item_description" aria-controls="item_description" role="tab" data-toggle="tab">
-                            <?= _l('Item Description'); ?>
-                        </a>
-                    </li>
-                    
-                    <!-- Fixed comment syntax -->
-                    <!-- <li role="presentation" class="<?= $this->input->get('tab') == 'item_description' ? 'active' : ''; ?>">
-                        <a href="#item_description" aria-controls="item_description" role="tab" data-toggle="tab">
-                           <?= _l('item_description'); ?>
-                        </a>
-                    </li> -->
-
-                    <li role="presentation">
-                        <a href="#billing_and_shipping" aria-controls="billing_and_shipping" role="tab" data-toggle="tab">
-                            <?= _l('billing_shipping'); ?>
-                        </a>
-                    </li>
-                    
-                    <li role="presentation">
-                        <a href="#transport" aria-controls="transport" role="tab" data-toggle="tab">
-                            <?= _l('transport'); ?>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="tab-content mtop15">
-            <!-- Contact Info Tab -->
-            <div role="tabpanel" class="tab-pane<?= ! $this->input->get('tab') ? ' active' : ''; ?>" id="contact_info">
-                <div class="row">
-                    <div class="col-md-12<?= isset($client) && (! is_empty_customer_company($client->userid) && total_rows(db_prefix() . 'contacts', ['userid' => $client->userid, 'is_primary' => 1]) > 0) ? '' : ' hide'; ?>"
-                        id="client-show-primary-contact-wrapper">
-                        <div class="checkbox checkbox-info mbot20 no-mtop">
-                            <input type="checkbox" name="show_primary_contact"
-                                <?= isset($client) && $client->show_primary_contact == 1 ? 'checked' : ''; ?>
-                            value="1" id="show_primary_contact">
-                            <label for="show_primary_contact">
-                                <?= _l('show_primary_contact', _l('invoices') . ', ' . _l('estimates') . ', ' . _l('payments') . ', ' . _l('credit_notes')); ?>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    
-                </div>
-            </div>
-
-            <!-- Item Description Tab -->
-            <div role="tabpanel" class="tab-pane<?= $this->input->get('tab') == 'item_description' ? ' active' : ''; ?>" id="item_description">
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-4">
@@ -869,300 +803,6 @@
 
                 </div>
 
-                
-
-                <?php hooks()->do_action('after_render_invoice_template', $invoice ?? false); ?>
-            </div>
-
-            <!-- Billing & Shipping Tab -->
-            <div role="tabpanel" class="tab-pane" id="billing_and_shipping">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h4 class="tw-font-semibold tw-text-base tw-text-neutral-700 tw-flex tw-justify-between tw-items-center tw-mt-0 tw-mb-6">
-                                    <?= _l('billing_address'); ?>
-                                    <a href="#" class="billing-same-as-customer tw-text-sm tw-text-neutral-500 hover:tw-text-neutral-700 active:tw-text-neutral-700">
-                                        <?= _l('customer_billing_same_as_profile'); ?>
-                                    </a>
-                                </h4>
-
-                                <?php $value = (isset($client) ? $client->mobile_number : ''); ?>
-                                <?= render_input('mobile_number', 'Mobile number', $value, 'text', ['placeholder' => 'Enter mobile number']); ?>
-
-                                <?php $value = (isset($client) ? $client->email_address : ''); ?>
-                                <?= render_input('email_address', 'Email address', $value, 'email', ['placeholder' => 'Enter email address']); ?>
-
-                                <?php $value = (isset($client) ? $client->billing_street : ''); ?>
-                                <?= render_textarea('billing_street', 'billing_street', $value); ?>
-                                
-                                <?php $value = (isset($client) ? $client->billing_city : ''); ?>
-                                <?= render_input('billing_city', 'billing_city', $value); ?>
-                                
-                                <?php $value = (isset($client) ? $client->billing_state : ''); ?>
-                                <?= render_input('billing_state', 'billing_state', $value); ?>
-                                
-                                <?php $value = (isset($client) ? $client->billing_zip : ''); ?>
-                                <?= render_input('billing_zip', 'billing_zip', $value); ?>
-                                
-                                <?php $selected = (isset($client) ? $client->billing_country : ''); ?>
-                                <?= render_select('billing_country', $countries, ['country_id', ['short_name']], 'billing_country', $selected, ['data-none-selected-text' => _l('dropdown_non_selected_tex')]); ?>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <h4 class="tw-font-semibold tw-text-base tw-text-neutral-700 tw-flex tw-justify-between tw-items-center tw-mt-0 tw-mb-6">
-                                    <span>
-                                        <i class="fa-regular fa-circle-question tw-mr-1" data-toggle="tooltip"
-                                            data-title="<?= _l('customer_shipping_address_notice'); ?>"></i>
-                                        <?= _l('shipping_address'); ?>
-                                    </span>
-                                    <a href="#" class="customer-copy-billing-address tw-text-sm tw-text-neutral-500 hover:tw-text-neutral-700 active:tw-text-neutral-700">
-                                        <?= _l('customer_billing_copy'); ?>
-                                    </a>
-                                </h4>
-                                
-                                <?php $value = (isset($client) ? $client->mobile_number_shipping : ''); ?>
-                                <?= render_input('mobile_number_shipping', 'Mobile number', $value, 'text', ['placeholder' => 'Enter mobile number']); ?>
-
-                                <?php $value = (isset($client) ? $client->email_address_shipping : ''); ?>
-                                <?= render_input('email_address_shipping', 'Email address', $value, 'email', ['placeholder' => 'Enter email address']); ?>
-
-                                <?php $value = (isset($client) ? $client->shipping_street : ''); ?>
-                                <?= render_textarea('shipping_street', 'shipping_street', $value); ?>
-                                
-                                <?php $value = (isset($client) ? $client->shipping_city : ''); ?>
-                                <?= render_input('shipping_city', 'shipping_city', $value); ?>
-                                
-                                <?php $value = (isset($client) ? $client->shipping_state : ''); ?>
-                                <?= render_input('shipping_state', 'shipping_state', $value); ?>
-                                
-                                <?php $value = (isset($client) ? $client->shipping_zip : ''); ?>
-                                <?= render_input('shipping_zip', 'shipping_zip', $value); ?>
-                                
-                                <?php $selected = (isset($client) ? $client->shipping_country : ''); ?>
-                                <?= render_select('shipping_country', $countries, ['country_id', ['short_name']], 'shipping_country', $selected, ['data-none-selected-text' => _l('dropdown_non_selected_tex')]); ?>
-                            </div>
-                            
-                            <?php if (isset($client) && (total_rows(db_prefix() . 'invoices', ['clientid' => $client->userid]) > 0 || total_rows(db_prefix() . 'estimates', ['clientid' => $client->userid]) > 0 || total_rows(db_prefix() . 'creditnotes', ['clientid' => $client->userid]) > 0)) { ?>
-                            <div class="col-md-12">
-                                <div class="tw-bg-neutral-50 tw-py-3 tw-px-4 tw-rounded-lg tw-border tw-border-solid tw-border-neutral-200">
-                                    <div class="checkbox checkbox-primary -tw-mb-0.5">
-                                        <input type="checkbox" name="update_all_other_transactions" id="update_all_other_transactions">
-                                        <label for="update_all_other_transactions">
-                                            <?= _l('customer_update_address_info_on_invoices'); ?><br />
-                                        </label>
-                                    </div>
-                                    <p class="tw-ml-7 tw-mb-0">
-                                        <?= _l('customer_update_address_info_on_invoices_help'); ?>
-                                    </p>
-                                    <div class="checkbox checkbox-primary">
-                                        <input type="checkbox" name="update_credit_notes" id="update_credit_notes">
-                                        <label for="update_credit_notes">
-                                            <?= _l('customer_profile_update_credit_notes'); ?>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php } ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Transport Tab -->
-            <div role="tabpanel" class="tab-pane" id="transport">
-                <div class="row">
-                    <!-- Transport Type -->
-                    <div class="col-md-4">
-                        <?php
-                        $transport_options = [
-                            ['id' => 'road', 'name' => 'Road Transport'],
-                            ['id' => 'rail', 'name' => 'Rail Transport'],
-                            ['id' => 'air', 'name' => 'Air Transport'],
-                            ['id' => 'sea', 'name' => 'Sea Transport'],
-                        ];
-
-                        echo render_select(
-                            'transport_type',
-                            $transport_options,
-                            ['id', 'name'],
-                            'Transport Type',
-                            isset($client) ? $client->transport_type : '',
-                            ['id' => 'transport_type', 'class' => 'selectpicker', 'data-width' => '100%']
-                        );
-                        ?>
-                    </div>
-
-                    <!-- Transport Details -->
-                    <div class="col-md-4">
-                        <?= render_textarea('transport_details', 'Transport Details', isset($client) ? $client->transport_details : '', ['rows' => 3]); ?>
-                    </div>
-
-                    <!-- Transport Cost -->
-                    <div class="col-md-4">
-                        <?= render_input('transport_cost', 'Transport Cost', isset($client) ? $client->transport_cost : '', 'number', ['min' => 0]); ?>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <?= render_input('transporter_name', 'Transporter Name', isset($client) ? $client->transporter_name : '', 'text'); ?>
-                    </div>
-
-                    <div class="col-md-6">
-                        <?php
-                        $transport_modes = [
-                            ['id' => 'road', 'name' => 'Road'],
-                            ['id' => 'rail', 'name' => 'Rail'],
-                            ['id' => 'air', 'name' => 'Air'],
-                            ['id' => 'sea', 'name' => 'Sea'],
-                        ];
-                        
-                        echo render_select(
-                            'mode_of_transport',
-                            $transport_modes,
-                            ['id', 'name'],
-                            'Mode of Transport',
-                            isset($client) ? $client->mode_of_transport : '',
-                            ['id' => 'mode_of_transport', 'class' => 'selectpicker', 'data-width' => '100%']
-                        );
-                        ?>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <?= render_input('lr_no', 'LR No.', isset($client) ? $client->lr_no : '', 'text'); ?>
-                    </div>
-
-                    <div class="col-md-6">
-                        <?= render_input('eway_bill_no', 'E-Way Bill No', isset($client) ? $client->eway_bill_no : '', 'text'); ?>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <?php
-                        $lr_date_value = isset($client) && $client->lr_date ? _d($client->lr_date) : '';
-                        echo render_date_input('lr_date', 'LR Date', $lr_date_value);
-                        ?>
-                    </div>
-
-                    <div class="col-md-6">
-                        <?php
-                        $eway_bill_date_value = isset($client) && $client->eway_bill_date ? _d($client->eway_bill_date) : '';
-                        echo render_date_input('eway_bill_date', 'E-Way Bill Date', $eway_bill_date_value);
-                        ?>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <?= render_input('vehicle_no', 'Vehicle No.', isset($client) ? $client->vehicle_no : '', 'text'); ?>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <?= render_input('driver_name', 'Driver Name', isset($client) ? $client->driver_name : '', 'text'); ?>
-                    </div>
-
-                    <div class="col-md-6">
-                        <?= render_input('dl_no', 'DL No.', isset($client) ? $client->dl_no : '', 'text'); ?>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <?= render_input('driver_mobile_no', 'Driver Mobile No.', isset($client) ? $client->driver_mobile_no : '', 'text'); ?>
-                    </div>
-                </div>
-            </div>
-
-            <?php hooks()->do_action('after_custom_profile_tab_content', $client ?? false); ?>
-        </div>
-        
-        <?php if (isset($client)) { ?>
-        <div role="tabpanel" class="tab-pane" id="customer_admins">
-            <?php if (staff_can('create', 'customers') || staff_can('edit', 'customers')) { ?>
-            <a href="#" data-toggle="modal" data-target="#customer_admins_assign"
-                class="btn btn-primary mbot30"><?= _l('assign_admin'); ?></a>
-            <?php } ?>
-            <table class="table dt-table">
-                <thead>
-                    <tr>
-                        <th><?= _l('staff_member'); ?></th>
-                        <th><?= _l('customer_admin_date_assigned'); ?></th>
-                        <?php if (staff_can('create', 'customers') || staff_can('edit', 'customers')) { ?>
-                        <th class="options"><?= _l('options'); ?></th>
-                        <?php } ?>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($customer_admins as $c_admin) { ?>
-                    <tr>
-                        <td>
-                            <a href="<?= admin_url('profile/' . $c_admin['staff_id']); ?>">
-                                <?= staff_profile_image($c_admin['staff_id'], [
-                                    'staff-profile-image-small',
-                                    'mright5',
-                                ]);
-                                echo e(get_staff_full_name($c_admin['staff_id'])); ?>
-                            </a>
-                        </td>
-                        <td data-order="<?= e($c_admin['date_assigned']); ?>">
-                            <?= e(_dt($c_admin['date_assigned'])); ?>
-                        </td>
-                        <?php if (staff_can('create', 'customers') || staff_can('edit', 'customers')) { ?>
-                        <td>
-                            <a href="<?= admin_url('clients/delete_customer_admin/' . $client->userid . '/' . $c_admin['staff_id']); ?>"
-                                class="tw-text-neutral-500 hover:tw-text-neutral-700 focus:tw-text-neutral-700 _delete">
-                                <i class="fa-regular fa-trash-can fa-lg"></i>
-                            </a>
-                        </td>
-                        <?php } ?>
-                    </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-        </div>
-        <?php } ?>
-    </div>
-    <?= form_close(); ?>
-</div>
-
-<?php if (isset($client)) { ?>
-<?php if (staff_can('create', 'customers') || staff_can('edit', 'customers')) { ?>
-<div class="modal fade" id="customer_admins_assign" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-        <?= form_open(admin_url('clients/assign_admins/' . $client->userid)); ?>
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title"><?= _l('assign_admin'); ?></h4>
-            </div>
-            <div class="modal-body">
-                <?php
-                $selected = [];
-                foreach ($customer_admins as $c_admin) {
-                    array_push($selected, $c_admin['staff_id']);
-                }
-                echo render_select('customer_admins[]', $staff, ['staffid', ['firstname', 'lastname']], '', $selected, ['multiple' => true], [], '', '', false); ?>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><?= _l('close'); ?></button>
-                <button type="submit" class="btn btn-primary"><?= _l('submit'); ?></button>
-            </div>
-        </div>
-        <?= form_close(); ?>
-    </div>
-</div>
-<?php } ?>
-<?php } ?>
-<?php $this->load->view('admin/clients/client_group'); ?>
-                
                 <hr class="hr-panel-separator" />
 
                 <div class="panel-body">
@@ -1209,10 +849,30 @@
                         <?php } ?>
                     </ul>
                 </div>
-            </div>
-        </div>
-    </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
 // Initialize item counter
@@ -1525,3 +1185,11 @@ jQuery(document).ready(function($) {
     calculateInvoiceTotal();
 });
 </script>
+
+
+
+
+
+
+
+

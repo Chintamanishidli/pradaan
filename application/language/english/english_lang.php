@@ -1344,6 +1344,8 @@ $lang['email_template_contracts_fields_heading'] = 'Contracts';
 $lang['invoice_estimate_general_options'] = 'General Options';
 $lang['invoice_table_item_description']   = 'Description';
 $lang['invoice_recurring_indicator']      = 'Recurring';
+$lang['item_description'] = 'Item Description';
+$lang['transport'] = 'Transport';
 
 # Estimates
 $lang['estimate_convert_to_invoice_successfully'] = 'Estimate converted to invoice successfully';
@@ -1386,7 +1388,14 @@ $lang['shipping_state']                     = 'State';
 $lang['shipping_zip']                       = 'Zip Code';
 $lang['shipping_country']                   = 'Country';
 $lang['get_shipping_from_customer_profile'] = 'Get shipping details from customer profile';
-
+$lang['review_client_information'] = 'Review Client Information';
+$lang['review_client_info_before_submit'] = 'Please review the client information below before submitting.';
+$lang['client_information'] = 'Client Information';
+$lang['please_fill_required_fields'] = 'Please fill all required fields.';
+$lang['processing'] = 'Processing...';
+$lang['edit'] = 'Edit';
+$lang['next'] = 'Next';
+$lang['field_required'] = 'is required';
 # Customer
 $lang['customer_default_currency']                             = 'Default Currency';
 $lang['customer_update_address_info_on_invoices']              = 'Update the shipping/billing info on all previous invoices/estimates';
@@ -4083,3 +4092,29 @@ $lang['csv_export_to_date'] = 'To Date';
 $lang['csv_export_button'] = 'Export';
 $lang['supplyer_entery'] = 'Supplier Entry';
 
+// Customer Fields
+$lang['customer_code'] = 'Customer Code';
+$lang['organization'] = 'Organization';
+$lang['branch'] = 'Branch';
+$lang['customer_type'] = 'Customer Type';
+$lang['customer_category'] = 'Category';
+$lang['customer_group'] = 'Group';
+$lang['payment_method'] = 'Payment Method';
+$lang['currency'] = 'Currency';
+$lang['tax_id'] = 'Tax ID';
+$lang['bank_name'] = 'Bank Name';
+$lang['bank_account'] = 'Account Number';
+$lang['ifsc_code'] = 'IFSC Code';
+
+// Indian Specific Fields
+$lang['pan_no'] = 'PAN Number';
+$lang['aadhar_no'] = 'Aadhar Number';
+$lang['gstin_no'] = 'GSTIN';
+$lang['gstin_status'] = 'GSTIN Status';
+$lang['taxpayer_type'] = 'Taxpayer Type';
+$lang['gst_registration_type'] = 'GST Registration Type';
+$lang['state_code'] = 'State Code';
+$lang['place_of_supply'] = 'Place of Supply';
+$lang['nature_of_business'] = 'Nature of Business';
+$lang['business_reg_no'] = 'Business Registration No';
+$lang['cin_no'] = 'CIN No';

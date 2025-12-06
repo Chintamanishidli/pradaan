@@ -5,8 +5,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Clients extends AdminController
 {
     /* List all clients */
-    public function index()
+    public function index($id = '')
     {
+        
         if (staff_cant('view', 'customers')) {
             if (!have_assigned_customers() && staff_cant('create', 'customers')) {
                 access_denied('customers');
@@ -130,6 +131,12 @@ class Clients extends AdminController
         // Customer groups
         $data['groups'] = $this->clients_model->get_groups();
 
+        // ============ ADDED CODE: Load organization and branch data ============
+        // Load organization model
+        $this->load->model('organizations_model');
+        $data['organizations'] = $this->organizations_model->get_all();
+        $data['branches'] = [];
+        
         if ($id == '') {
             $title = _l('add_new', _l('client'));
         } else {
@@ -146,6 +153,13 @@ class Clients extends AdminController
             if (!$data['tab']) {
                 show_404();
             }
+
+            // ============ ADDED CODE: Get branches for selected organization ============
+            if ($client->organization_id) {
+                $this->load->model('branches_model');
+                $data['branches'] = $this->branches_model->get_by_organization($client->organization_id);
+            }
+            // ============ END ADDED CODE ============
 
             // Fetch data based on groups
             if ($group == 'profile') {
@@ -257,6 +271,11 @@ class Clients extends AdminController
 
         $data['bodyclass'] = 'customer-profile dynamic-create-groups';
         $data['title']     = $title;
+
+        // ============ ADDED CODE: Load countries data ============
+        // $this->load->model('countries_model');
+        // $data['countries'] = $this->countries_model->get();
+        // ============ END ADDED CODE ============
 
         $this->load->view('admin/clients/client', $data);
     }
@@ -1037,34 +1056,34 @@ class Clients extends AdminController
         $pdf->Output(slug_it(_l('customer_statement') . '-' . $data['statement']['client']->company) . '.pdf', $type);
     }
 
-    public function send_statement()
-    {
-        $customer_id = $this->input->get('customer_id');
+public function send_statement()
+{
+    $customer_id = $this->input->get('customer_id');
 
-        if (staff_cant('view', 'invoices') && staff_cant('view', 'payments')) {
-            set_alert('danger', _l('access_denied'));
-            redirect(admin_url('clients/client/' . $customer_id));
-        }
-
-        $from = $this->input->get('from');
-        $to   = $this->input->get('to');
-
-        $send_to = $this->input->post('send_to');
-        $cc      = $this->input->post('cc');
-
-        $success = $this->clients_model->send_statement_to_email($customer_id, $send_to, $from, $to, $cc);
-        // In case client use another language
-        load_admin_language();
-        if ($success) {
-            set_alert('success', _l('statement_sent_to_client_success'));
-        } else {
-            set_alert('danger', _l('statement_sent_to_client_fail'));
-        }
-
-        redirect(admin_url('clients/client/' . $customer_id . '?group=statement'));
+    if (staff_cant('view', 'invoices') && staff_cant('view', 'payments')) {
+        set_alert('danger', _l('access_denied'));
+        redirect(admin_url('clients/client/' . $customer_id));
     }
 
-    public function statement()
+    $from = $this->input->get('from');
+    $to   = $this->input->get('to');
+
+    $send_to = $this->input->post('send_to');
+    $cc      = $this->input->post('cc');
+
+    $success = $this->clients_model->send_statement_to_email($customer_id, $send_to, $from, $to, $cc);
+    // In case client use another language
+    load_admin_language();
+    if ($success) {
+        set_alert('success', _l('statement_sent_to_client_success'));
+    } else {
+        set_alert('danger', _l('statement_sent_to_client_fail'));
+    }
+
+    redirect(admin_url('clients/client/' . $customer_id . '?group=statement'));
+}
+
+public function statement()
     {
         if (staff_cant('view', 'invoices') && staff_cant('view', 'payments')) {
             header($_SERVER['SERVER_PROTOCOL'] . ' 400 Bad error');
@@ -1086,13 +1105,10 @@ class Clients extends AdminController
         echo json_encode($viewData);
     }
 
-
     public function get_branches_by_org($organization_id)
-{
-    $this->load->model('Branch_model');
-    $branches = $this->Branch_model->get_branches_by_org($organization_id);
-
-    echo json_encode($branches);
-}
-
+    {
+        $this->load->model('branches_model');
+        $branches = $this->branches_model->get_by_organization($organization_id);
+        echo json_encode($branches);
+    }
 }

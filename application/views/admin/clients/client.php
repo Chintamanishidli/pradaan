@@ -188,7 +188,6 @@
         });
     </script>
 <?php } ?>
-
 <script>
 (function ($) {
     "use strict";

@@ -128,6 +128,20 @@ class Clients_model extends App_Model
 
         $data = $this->check_zero_columns($data);
 
+        // ============ ADD THIS CODE ============
+    // Handle new organization and branch fields
+    if (isset($data['organization_id']) && $data['organization_id'] != '') {
+        $data['organization_id'] = $data['organization_id'];
+    } else {
+        $data['organization_id'] = null;
+    }
+    
+    if (isset($data['branch_id']) && $data['branch_id'] != '') {
+        $data['branch_id'] = $data['branch_id'];
+    } else {
+        $data['branch_id'] = null;
+    }
+
         $data = hooks()->apply_filters('before_client_added', $data);
 
         foreach ($this->contact_columns as $field) {
@@ -231,6 +245,22 @@ class Clients_model extends App_Model
     {
         $updated = false;
         $data    = $this->check_zero_columns($data);
+
+        
+    // ============ ADD THIS CODE ============
+    // Handle new organization and branch fields
+    if (isset($data['organization_id']) && $data['organization_id'] != '') {
+        $data['organization_id'] = $data['organization_id'];
+    } else {
+        $data['organization_id'] = null;
+    }
+    
+    if (isset($data['branch_id']) && $data['branch_id'] != '') {
+        $data['branch_id'] = $data['branch_id'];
+    } else {
+        $data['branch_id'] = null;
+    }
+    // ============ END ADDED CODE ============
 
         $data = hooks()->apply_filters('before_client_updated', $data, $id);
 
@@ -720,6 +750,23 @@ class Clients_model extends App_Model
         if (isset($data['shipping_country']) && $data['shipping_country'] == '') {
             $data['shipping_country'] = 0;
         }
+
+        
+    // ============ ADD THIS CODE ============
+    // Handle organization and branch for company details update
+    if (isset($data['organization_id']) && $data['organization_id'] != '') {
+        $data['organization_id'] = $data['organization_id'];
+    } else {
+        $data['organization_id'] = null;
+    }
+    
+    if (isset($data['branch_id']) && $data['branch_id'] != '') {
+        $data['branch_id'] = $data['branch_id'];
+    } else {
+        $data['branch_id'] = null;
+    }
+    // ============ END ADDED CODE ============
+
 
         // From v.1.9.4 these fields are textareas
         $data['address'] = trim($data['address']);

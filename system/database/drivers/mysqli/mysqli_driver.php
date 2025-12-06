@@ -511,6 +511,8 @@ class CI_DB_mysqli_driver extends CI_DB {
 		return array('code' => $this->conn_id->errno, 'message' => $this->conn_id->error);
 	}
 
+
+	
 	// --------------------------------------------------------------------
 
 	/**

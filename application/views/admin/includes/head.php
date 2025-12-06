@@ -10,6 +10,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Load jQuery FIRST -->
+<script src="<?= base_url('assets/plugins/jquery/jquery.min.js'); ?>"></script>
+<script src="<?= base_url('assets/plugins/jquery/jquery-migrate.min.js'); ?>"></script>
     <title>
         <?= $title ?? get_option('companyname'); ?>
     </title>
