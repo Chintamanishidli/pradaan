@@ -2,7 +2,7 @@
 <div class="<?= (! isset($invoice) || (isset($invoice) && count($invoices_to_merge) == 0 && (! isset($invoice_from_project) && count($expenses_to_bill) == 0 || $invoice->status == Invoices_model::STATUS_CANCELLED))) ? 'hide' : ''; ?>"
                 id="invoice_top_info">
                 <div class="panel_s">
-                    <div class="panel-body tw-bg-gradient-to-l tw-from-transparent tw-to-neutral-50">
+                    <div class="panel-body tw-bg-gradient-to-l tw-from-transparent tw-to-neutral-50">           
                         <div class="row">
                             <div id="merge" class="col-md-6">
                                 <?php if (isset($invoice)) {
@@ -32,17 +32,25 @@
                         <div class="col-md-6">
                             <div class="f_client_id">
                                 <div class="form-group select-placeholder">
-                                    <label for="clientid"
-                                        class="control-label"><?= _l('invoice_select_customer'); ?></label>
-                                    <select id="clientid" name="clientid" data-live-search="true" data-width="100%"
-                                        class="ajax-search<?= isset($invoice) && empty($invoice->clientid) ? ' customer-removed' : ''; ?>"
+                                    <label for="clientid" class="control-label"><?= _l('invoice_select_customer'); ?></label>
+                                    <select id="clientid" name="clientid" class="form-control selectpicker" 
+                                        data-live-search="true" data-width="100%"
                                         data-none-selected-text="<?= _l('dropdown_non_selected_tex'); ?>">
-                                        <?php $selected = isset($invoice) ? $invoice->clientid : ($customer_id ?? ''); ?>
-                                        <?php if ($selected != '') {
-                                            $rel_data = get_relation_data('customer', $selected);
-                                            $rel_val  = get_relation_values($rel_data, 'customer');
-                                            echo '<option value="' . $rel_val['id'] . '" selected>' . $rel_val['name'] . '</option>';
-                                        } ?>
+                                        <option value=""><?= _l('dropdown_non_selected_tex'); ?></option>
+                                        <?php 
+                                        // Fetch clients from database
+                                        $this->db->select('userid, company');
+                                        $this->db->order_by('company', 'asc');
+                                        $clients = $this->db->get(db_prefix() . 'clients')->result_array();
+                                        
+                                        $selected = isset($invoice) ? $invoice->clientid : ($customer_id ?? '');
+                                        
+                                        foreach ($clients as $client) {
+                                            $is_selected = ($selected == $client['userid']) ? 'selected' : '';
+                                            echo '<option value="' . $client['userid'] . '" ' . $is_selected . '>' . 
+                                                 e($client['company']) . '</option>';
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
