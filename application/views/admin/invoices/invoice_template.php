@@ -929,25 +929,15 @@
                                     </h4>
                                     
                                     <?php 
-                                    // Get shipping fields from invoice if editing, otherwise from client
-                                    $mobile_number_shipping = isset($invoice) ? ($invoice->mobile_number_shipping ?? '') : '';
-                                    $email_address_shipping = isset($invoice) ? ($invoice->email_address_shipping ?? '') : '';
-                                    $shipping_street = isset($invoice) ? ($invoice->shipping_street ?? '') : '';
-                                    $shipping_city = isset($invoice) ? ($invoice->shipping_city ?? '') : '';
-                                    $shipping_state = isset($invoice) ? ($invoice->shipping_state ?? '') : '';
-                                    $shipping_zip = isset($invoice) ? ($invoice->shipping_zip ?? '') : '';
-                                    $shipping_country = isset($invoice) ? ($invoice->shipping_country ?? '') : '';
-                                    
-                                    // If client is an array, extract values safely
-                                    if (isset($client) && is_array($client)) {
-                                        $mobile_number_shipping = $client['mobile_number_shipping'] ?? $mobile_number_shipping;
-                                        $email_address_shipping = $client['email_address_shipping'] ?? $email_address_shipping;
-                                        $shipping_street = $client['shipping_street'] ?? $shipping_street;
-                                        $shipping_city = $client['shipping_city'] ?? $shipping_city;
-                                        $shipping_state = $client['shipping_state'] ?? $shipping_state;
-                                        $shipping_zip = $client['shipping_zip'] ?? $shipping_zip;
-                                        $shipping_country = $client['shipping_country'] ?? $shipping_country;
-                                    }
+                                    // Shipping address fields are left empty by default
+                                    // Users can manually enter or use "Copy from Billing" button
+                                    $mobile_number_shipping = '';
+                                    $email_address_shipping = '';
+                                    $shipping_street = '';
+                                    $shipping_city = '';
+                                    $shipping_state = '';
+                                    $shipping_zip = '';
+                                    $shipping_country = '';
                                     ?>
                                     
                                     <?= render_input('mobile_number_shipping', 'Mobile number', $mobile_number_shipping, 'text', ['placeholder' => 'Enter mobile number']); ?>
