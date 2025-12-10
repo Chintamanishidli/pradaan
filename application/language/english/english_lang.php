@@ -4118,3 +4118,65 @@ $lang['place_of_supply'] = 'Place of Supply';
 $lang['nature_of_business'] = 'Nature of Business';
 $lang['business_reg_no'] = 'Business Registration No';
 $lang['cin_no'] = 'CIN No';
+
+
+// Transport Management
+$lang['transports'] = 'Transports';
+$lang['transport'] = 'Transport';
+$lang['add_transport'] = 'Add Transport';
+$lang['edit_transport'] = 'Edit Transport';
+$lang['transport_not_found'] = 'Transport not found';
+$lang['transport_type'] = 'Transport Type';
+$lang['transporter_name'] = 'Transporter Name';
+$lang['vehicle_no'] = 'Vehicle No.';
+$lang['lr_no'] = 'LR No.';
+$lang['eway_bill_no'] = 'E-Way Bill No.';
+$lang['driver_name'] = 'Driver Name';
+$lang['dl_no'] = 'DL No.';
+$lang['driver_mobile_no'] = 'Driver Mobile No.';
+$lang['transport_cost'] = 'Transport Cost';
+$lang['transport_details'] = 'Transport Details';
+$lang['mode_of_transport'] = 'Mode of Transport';
+$lang['transport_status'] = 'Transport Status';
+$lang['status_updated_successfully'] = 'Status updated successfully';
+$lang['document_added_successfully'] = 'Document added successfully';
+$lang['add_transport_for'] = 'Add Transport for';
+$lang['transport_statistics'] = 'Transport Statistics';
+$lang['transport_settings'] = 'Transport Settings';
+
+// Transport Types
+$lang['road_transport'] = 'Road Transport';
+$lang['rail_transport'] = 'Rail Transport';
+$lang['air_transport'] = 'Air Transport';
+$lang['sea_transport'] = 'Sea Transport';
+$lang['courier_service'] = 'Courier Service';
+$lang['multimodal_transport'] = 'Multimodal Transport';
+
+// Transport Modes
+$lang['full_truck_load'] = 'Full Truck Load (FTL)';
+$lang['part_truck_load'] = 'Part Truck Load (PTL)';
+$lang['container'] = 'Container';
+$lang['parcel'] = 'Parcel';
+$lang['express_service'] = 'Express Service';
+$lang['standard_service'] = 'Standard Service';
+
+// Statuses
+$lang['pending'] = 'Pending';
+$lang['dispatched'] = 'Dispatched';
+$lang['in_transit'] = 'In Transit';
+$lang['delivered'] = 'Delivered';
+$lang['delayed'] = 'Delayed';
+$lang['cancelled'] = 'Cancelled';
+
+// Route Statuses
+$lang['arrived'] = 'Arrived';
+$lang['departed'] = 'Departed';
+$lang['completed'] = 'Completed';
+
+// Document Types
+$lang['lr_copy'] = 'LR Copy';
+$lang['eway_bill'] = 'E-Way Bill';
+$lang['insurance'] = 'Insurance';
+$lang['driver_license'] = 'Driver License';
+$lang['vehicle_rc'] = 'Vehicle RC';
+$lang['other'] = 'Other';
