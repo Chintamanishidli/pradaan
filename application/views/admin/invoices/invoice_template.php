@@ -29,6 +29,7 @@
     <div class="panel-body">
         <?php hooks()->do_action('before_render_invoice_template', $invoice ?? null); ?>
         <?php if (isset($invoice)) {
+            echo form_hidden('isedit');
             echo form_hidden('merge_current_invoice', $invoice->id);
         } ?>
         <div class="row">
@@ -277,6 +278,8 @@
     $currency_attr = hooks()->apply_filters('invoice_currency_attributes', $currency_attr);
     ?>
                             <?= render_select('currency', $currencies, ['id', 'name', 'symbol'], 'invoice_add_edit_currency', $selected, $currency_attr); ?>
+                            <!-- Hidden field to ensure currency is submitted (disabled select won't submit) -->
+                            <input type="hidden" name="currency" value="<?= $selected; ?>">
                         </div>
                         <div class="col-md-6">
                             <?php
@@ -2011,26 +2014,245 @@ $(document).ready(function() {
         return true;
     });
     
-    // Your existing item management functions...
-    function addItemToDisplayTable() {
-        // ... your existing addItemToDisplayTable code ...
-    }
+    // Your existing item management functions - exposed to window for onclick handlers
+    window.addItemToDisplayTable = function() {
+        console.log('Adding item to display table...');
+        
+        var description = $('textarea[name="description"]').val();
+        var longDescription = $('textarea[name="long_description"]').val();
+        var quantity = parseFloat($('input[name="quantity"]').val()) || 1;
+        var rate = parseFloat($('input[name="rate"]').val()) || 0;
+        
+        // Get selected taxes
+        var selectedTaxes = [];
+        $('select[name="taxname"] option:selected').each(function() {
+            selectedTaxes.push($(this).val());
+        });
+        
+        console.log('Form values:', {
+            description: description,
+            longDescription: longDescription,
+            quantity: quantity,
+            rate: rate,
+            selectedTaxes: selectedTaxes
+        });
+        
+        // Basic validation
+        if (!description.trim()) {
+            alert('Please enter item description');
+            return false;
+        }
+        
+        if (rate <= 0) {
+            alert('Please enter a valid rate');
+            return false;
+        }
+        
+        // Calculate amount
+        var amount = quantity * rate;
+        
+        // Create tax options HTML
+        var taxOptionsHtml = '';
+        $('select[name="taxname"] option').each(function() {
+            var isSelected = selectedTaxes.includes($(this).val());
+            taxOptionsHtml += '<option value="' + $(this).val() + '"' + (isSelected ? ' selected' : '') + '>' + $(this).text() + '</option>';
+        });
+        
+        // Create new row
+        var newRow = '<tr class="display-item" data-item-id="new">' +
+            '<td class="text-center serial-number">' + itemCounter + '</td>' +
+            '<td><textarea name="newitems[' + itemCounter + '][description]" class="form-control" rows="2">' + description + '</textarea></td>' +
+            '<td><textarea name="newitems[' + itemCounter + '][long_description]" class="form-control" rows="2">' + longDescription + '</textarea></td>' +
+            '<td><input type="number" name="newitems[' + itemCounter + '][qty]" value="' + quantity + '" class="form-control item-qty" onchange="updateItemAmount(this)"></td>' +
+            '<td><input type="number" name="newitems[' + itemCounter + '][rate]" value="' + rate + '" class="form-control item-rate" onchange="updateItemAmount(this)"></td>' +
+            '<td><select name="newitems[' + itemCounter + '][taxname][]" class="form-control selectpicker tax-select" multiple>' + taxOptionsHtml + '</select></td>' +
+            '<td class="text-right item-amount" data-amount="' + amount + '">$' + amount.toFixed(2) + '</td>' +
+            '<td class="text-center"><button type="button" class="btn btn-danger btn-sm" onclick="removeItem(this)"><i class="fa fa-times"></i></button></td>' +
+            '</tr>';
+        
+        console.log('New row HTML created');
+        
+        // Add to table
+        $('#items-display-body').append(newRow);
+        
+        // Initialize selectpicker for new row
+        $('.selectpicker').selectpicker();
+        
+        // Clear input form
+        window.clearItemForm();
+        
+        // Increment counter
+        itemCounter++;
+        
+        // Calculate totals
+        window.calculateInvoiceTotal();
+        
+        return false;
+    };
     
-    function removeItem(button) {
-        // ... your existing removeItem code ...
-    }
+    window.clearItemForm = function() {
+        $('textarea[name="description"]').val('');
+        $('textarea[name="long_description"]').val('');
+        $('input[name="quantity"]').val('1');
+        $('input[name="rate"]').val('');
+        $('select[name="taxname"]').selectpicker('deselectAll');
+    };
     
-    function updateItemAmount(input) {
-        // ... your existing updateItemAmount code ...
-    }
+    window.removeItem = function(button) {
+        var row = $(button).closest('tr');
+        var itemId = row.data('item-id');
+        
+        // If it's an existing item (not new), add to removed items
+        if (itemId && itemId !== 'new') {
+            $('#removed-items').append('<input type="hidden" name="removed_items[]" value="' + itemId + '">');
+        }
+        
+        // Remove the row
+        row.remove();
+        
+        // Recalculate and renumber serial numbers
+        window.renumberSerialNumbers();
+        
+        // Recalculate totals
+        window.calculateInvoiceTotal();
+    };
     
-    function renumberSerialNumbers() {
-        // ... your existing renumberSerialNumbers code ...
-    }
+    window.updateItemAmount = function(input) {
+        var row = $(input).closest('tr');
+        var qty = parseFloat(row.find('.item-qty').val()) || 0;
+        var rate = parseFloat(row.find('.item-rate').val()) || 0;
+        var amount = qty * rate;
+        
+        var amountCell = row.find('.item-amount');
+        amountCell.text('$' + amount.toFixed(2));
+        amountCell.attr('data-amount', amount);
+        
+        // Recalculate totals
+        window.calculateInvoiceTotal();
+    };
     
-    function calculateInvoiceTotal() {
-        // ... your existing calculateInvoiceTotal code ...
-    }
+    window.renumberSerialNumbers = function() {
+        // Get all rows in the display table
+        var rows = $('#items-display-body tr.display-item');
+        
+        // Update serial numbers and form field names
+        rows.each(function(index) {
+            var newSerialNumber = index + 1;
+            
+            // Update serial number display
+            $(this).find('.serial-number').text(newSerialNumber);
+            
+            // Get all form fields in this row
+            var formFields = $(this).find('input, textarea, select');
+            
+            formFields.each(function() {
+                var currentName = $(this).attr('name');
+                
+                if (currentName) {
+                    // Check if it's a newitem or existing item
+                    if (currentName.startsWith('newitems[')) {
+                        // Extract the old index
+                        var match = currentName.match(/newitems\[(\d+)\]/);
+                        if (match) {
+                            var oldIndex = match[1];
+                            // Replace the old index with new serial number
+                            var newName = currentName.replace(
+                                'newitems[' + oldIndex + ']',
+                                'newitems[' + newSerialNumber + ']'
+                            );
+                            $(this).attr('name', newName);
+                        }
+                    } else if (currentName.startsWith('items[')) {
+                        // For existing items when editing
+                        var match = currentName.match(/items\[(\d+)\]/);
+                        if (match) {
+                            var oldIndex = match[1];
+                            var newName = currentName.replace(
+                                'items[' + oldIndex + ']',
+                                'items[' + newSerialNumber + ']'
+                            );
+                            $(this).attr('name', newName);
+                        }
+                    }
+                }
+            });
+        });
+        
+        // Update the global counter for next new item
+        itemCounter = rows.length + 1;
+    };
+    
+    window.calculateInvoiceTotal = function() {
+        console.log('Calculating invoice total...');
+        
+        var subtotal = 0;
+        var itemCount = 0;
+        
+        // Calculate subtotal from all items
+        $('#items-display-body .display-item').each(function() {
+            itemCount++;
+            var amountCell = $(this).find('.item-amount');
+            var amount = 0;
+            
+            // Method 1: Try to get from data-amount attribute
+            if (amountCell.attr('data-amount')) {
+                amount = parseFloat(amountCell.attr('data-amount')) || 0;
+                console.log('Item ' + itemCount + ' amount from data-amount:', amount);
+            } 
+            // Method 2: Try to parse from text
+            else {
+                var amountText = amountCell.text().trim();
+                amount = parseFloat(amountText.replace(/[^\d.-]/g, '')) || 0;
+                console.log('Item ' + itemCount + ' amount from text:', amountText, 'parsed:', amount);
+            }
+            
+            subtotal += amount;
+        });
+        
+        console.log('Subtotal calculated:', subtotal, 'from', itemCount, 'items');
+        
+        // Calculate discount
+        var discountType = $('.discount-total-type-selected').text().trim();
+        var discountAmount = 0;
+        
+        if (discountType === '%') {
+            var discountPercent = parseFloat($('.input-discount-percent').val()) || 0;
+            discountAmount = subtotal * (discountPercent / 100);
+            console.log('Percentage discount:', discountPercent + '%', 'Amount:', discountAmount);
+        } else {
+            // Fixed amount discount
+            discountAmount = parseFloat($('.input-discount-fixed').val()) || 0;
+            // Ensure discount doesn't exceed subtotal
+            if (discountAmount > subtotal) {
+                discountAmount = subtotal;
+            }
+            console.log('Fixed discount:', discountAmount);
+        }
+        
+        // Get adjustment (can be positive or negative)
+        var adjustment = parseFloat($('input[name="adjustment"]').val()) || 0;
+        console.log('Adjustment:', adjustment);
+        
+        // Calculate total
+        var total = subtotal - discountAmount + adjustment;
+        
+        // Ensure total is not negative
+        if (total < 0) {
+            total = 0;
+        }
+        
+        console.log('Final total:', total);
+        
+        // Update display
+        $('.subtotal').text('$' + subtotal.toFixed(2));
+        $('.discount-total').text('-$' + discountAmount.toFixed(2));
+        
+        // Adjustment can be positive or negative
+        var adjustmentDisplay = adjustment >= 0 ? '$' + adjustment.toFixed(2) : '-$' + Math.abs(adjustment).toFixed(2);
+        $('.adjustment').text(adjustmentDisplay);
+        
+        $('.total').text('$' + total.toFixed(2));
+    };
     
     // Submit form function for dropdown actions
     window.submitInvoiceForm = function(action) {

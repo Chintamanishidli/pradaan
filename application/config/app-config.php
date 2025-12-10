@@ -83,6 +83,16 @@ define('SESS_SAVE_PATH', 'sessions');
 define('APP_SESSION_COOKIE_SAME_SITE', 'Lax');
 
 /**
+ * Custom CSRF exclude URIs - added to fix 419 errors
+ */
+$app_csrf_exclude_uris = [
+    'admin/invoices/validate_invoice_number',
+    'admin/invoices/get_invoices_total',
+    'admin/estimates/validate_estimate_number',
+    'admin/credit_notes/validate_number',
+];
+
+/**
  * Enables CSRF Protection
  */
 define('APP_CSRF_PROTECTION', true);

@@ -3,7 +3,6 @@
 <div id="wrapper">
     <div class="content">
         <div class="row">
-            <?= form_open($this->uri->uri_string(), ['id' => 'invoice-form', 'class' => '_transaction_form invoice-form']); ?>
             <?php if (isset($invoice)) {
                 echo form_hidden('isedit');
             } ?>
@@ -16,7 +15,6 @@
                 </h4>
                 <?php $this->load->view('admin/invoices/invoice_template'); ?>
             </div>
-            <?= form_close(); ?>
             <?php $this->load->view('admin/invoice_items/item'); ?>
         </div>
     </div>

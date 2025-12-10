@@ -101,12 +101,12 @@
 </div>
 <script>
     // Maybe in modal? Eq convert to invoice or convert proposal to estimate/invoice
-    if (typeof(jQuery) != 'undefined') {
+    if (typeof(jQuery) != 'undefined' && typeof(appValidateForm) != 'undefined') {
         init_item_js();
     } else {
         window.addEventListener('load', function() {
             var initItemsJsInterval = setInterval(function() {
-                if (typeof(jQuery) != 'undefined') {
+                if (typeof(jQuery) != 'undefined' && typeof(appValidateForm) != 'undefined') {
                     init_item_js();
                     clearInterval(initItemsJsInterval);
                 }

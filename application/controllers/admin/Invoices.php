@@ -301,6 +301,10 @@ class Invoices extends AdminController
     {
         if ($this->input->post()) {
             $invoice_data = $this->input->post();
+            
+            // Remove form control fields that shouldn't be inserted into the database
+            unset($invoice_data['form_action']);
+            
             if ($id == '') {
                 if (staff_cant('create', 'invoices')) {
                     access_denied('invoices');
