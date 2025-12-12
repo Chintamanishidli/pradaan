@@ -90,6 +90,7 @@ $app_csrf_exclude_uris = [
     'admin/invoices/get_invoices_total',
     'admin/estimates/validate_estimate_number',
     'admin/credit_notes/validate_number',
+    'admin/taxes/tax_name_exists',
 ];
 
 /**

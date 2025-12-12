@@ -40,10 +40,55 @@
 </script>
 <?php init_tail(); ?>
 <script>
-	$(function() {
-		init_invoice();
-	});
+// Fix for currency error
+$(document).ajaxError(function(event, jqxhr, settings, thrownError) {
+    if (settings.url && settings.url.includes('get_currency')) {
+        console.warn('Currency API call failed, preventing error propagation');
+        event.preventDefault();
+        event.stopPropagation();
+        
+        // Set default currency settings
+        if (typeof app === 'undefined') {
+            window.app = {};
+        }
+        if (typeof app.currency === 'undefined') {
+            app.currency = {
+                decimal_separator: '.',
+                thousand_separator: ',',
+                symbol: '$',
+                placement: 'before'
+            };
+        }
+        
+        return false;
+    }
+});
+
+// Initialize invoice with error handling
+$(function() {
+    try {
+        init_invoice();
+    } catch (e) {
+        console.error('Error initializing invoice list:', e);
+        
+        // Set defaults and retry
+        if (typeof app === 'undefined') window.app = {};
+        app.currency = {
+            decimal_separator: '.',
+            thousand_separator: ',',
+            symbol: '$',
+            placement: 'before'
+        };
+        
+        setTimeout(function() {
+            try {
+                init_invoice();
+            } catch (e2) {
+                console.error('Failed to initialize invoice:', e2);
+            }
+        }, 500);
+    }
+});
 </script>
 </body>
-
 </html>

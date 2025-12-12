@@ -24,36 +24,74 @@ class Taxes extends AdminController
     }
 
     /* Add or edit tax / ajax */
-    public function manage()
-    {
-        if ($this->input->post()) {
-            $data = $this->input->post();
-            if ($data['taxid'] == '') {
-                $success = $this->taxes_model->add($data);
-                $message = '';
-                if ($success == true) {
-                    $message = _l('added_successfully', _l('tax'));
-                }
-                echo json_encode([
-                    'success' => $success,
-                    'message' => $message,
-                ]);
+    // public function manage()
+    // {
+    //     if ($this->input->post()) {
+    //         $data = $this->input->post();
+    //         if ($data['taxid'] == '') {
+    //             $success = $this->taxes_model->add($data);
+    //             $message = '';
+    //             if ($success == true) {
+    //                 $message = _l('added_successfully', _l('tax'));
+    //             }
+    //             echo json_encode([
+    //                 'success' => $success,
+    //                 'message' => $message,
+    //             ]);
+    //         } else {
+    //             $success = $this->taxes_model->edit($data);
+    //             $message = '';
+    //             if (is_array($success) && isset($success['tax_is_using_expenses'])) {
+    //                 $success = false;
+    //                 $message = _l('tax_is_used_in_expenses_warning');
+    //             } elseif ($success == true) {
+    //                 $message = _l('updated_successfully', _l('tax'));
+    //             }
+    //             echo json_encode([
+    //                 'success' => $success,
+    //                 'message' => $message,
+    //             ]);
+    //         }
+    //     }
+    // }
+    /* Add or edit tax / ajax */
+public function manage()
+{
+    if ($this->input->post()) {
+        $data = $this->input->post();
+        
+        // Debug: Log what we're receiving
+        error_log('Tax Data Received: ' . print_r($data, true));
+        
+        if ($data['taxid'] == '') {
+            $success = $this->taxes_model->add($data);
+            $message = '';
+            if ($success == true) {
+                $message = _l('added_successfully', _l('tax'));
+                error_log('Tax added successfully');
             } else {
-                $success = $this->taxes_model->edit($data);
-                $message = '';
-                if (is_array($success) && isset($success['tax_is_using_expenses'])) {
-                    $success = false;
-                    $message = _l('tax_is_used_in_expenses_warning');
-                } elseif ($success == true) {
-                    $message = _l('updated_successfully', _l('tax'));
-                }
-                echo json_encode([
-                    'success' => $success,
-                    'message' => $message,
-                ]);
+                error_log('Failed to add tax');
             }
+            echo json_encode([
+                'success' => $success,
+                'message' => $message,
+            ]);
+        } else {
+            $success = $this->taxes_model->edit($data);
+            $message = '';
+            if (is_array($success) && isset($success['tax_is_using_expenses'])) {
+                $success = false;
+                $message = _l('tax_is_used_in_expenses_warning');
+            } elseif ($success == true) {
+                $message = _l('updated_successfully', _l('tax'));
+            }
+            echo json_encode([
+                'success' => $success,
+                'message' => $message,
+            ]);
         }
     }
+}
 
     /* Delete tax from database */
     public function delete($id)

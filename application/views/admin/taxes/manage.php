@@ -134,23 +134,54 @@ $(function() {
     });
 });
 
+// function manage_tax(form) {
+//     var data = $(form).serialize();
+//     var url = form.action;
+//     $.post(url, data).done(function(response) {
+//         response = JSON.parse(response);
+//         if (response.success == true) {
+//             $('.table-taxes').DataTable().ajax.reload();
+//             alert_float('success', response.message);
+//         } else {
+//             if (response.message != '') {
+//                 alert_float('warning', response.message);
+//             }
+//         }
+//         $('#tax_modal').modal('hide');
+//     });
+//     return false;
+// }
 function manage_tax(form) {
     var data = $(form).serialize();
     var url = form.action;
+    
+    console.log('Sending tax data:', data);
+    
     $.post(url, data).done(function(response) {
-        response = JSON.parse(response);
-        if (response.success == true) {
-            $('.table-taxes').DataTable().ajax.reload();
-            alert_float('success', response.message);
-        } else {
-            if (response.message != '') {
-                alert_float('warning', response.message);
+        console.log('Server response:', response);
+        
+        try {
+            response = JSON.parse(response);
+            if (response.success == true) {
+                $('.table-taxes').DataTable().ajax.reload();
+                alert_float('success', response.message);
+            } else {
+                if (response.message != '') {
+                    alert_float('warning', response.message || 'Failed to save tax');
+                }
             }
+        } catch(e) {
+            console.error('Error parsing response:', e);
+            alert_float('danger', 'Server returned invalid response');
         }
         $('#tax_modal').modal('hide');
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.error('AJAX Error:', textStatus, errorThrown);
+        alert_float('danger', 'Server error: ' + textStatus);
     });
     return false;
 }
+
 </script>
 </body>
 
