@@ -7,7 +7,8 @@ $this->ci->load->model('invoices_model');
 return App_table::find('invoices')
     ->outputUsing(function ($params) {
         extract($params);
-        $project_id = $this->ci->input->post('project_id');
+        $project_id   = $this->ci->input->post('project_id');
+        $baseCurrency = get_base_currency();
 
         $aColumns = [
             'number',
@@ -70,9 +71,11 @@ return App_table::find('invoices')
         $result = data_tables_init($aColumns, $sIndexColumn, $sTable, $join, $where, [
             db_prefix() . 'invoices.id',
             db_prefix() . 'invoices.clientid',
+            db_prefix() . 'invoices.total',
             db_prefix() . 'currencies.name as currency_name',
             'formatted_number',
             'project_id',
+            db_prefix() . 'invoices.subtotal',           
             'hash',
             'recurring',
             'deleted_customer_name',
@@ -112,9 +115,12 @@ return App_table::find('invoices')
 
             $row[] = $numberOutput;
 
-            $row[] = '<span class="tw-font-medium">' . e(app_format_money($aRow['total'], $aRow['currency_name'])) . '</span>';
+            // Calculate grand total (subtotal/total + GST)
+            $grandTotal = (float)$aRow['total'] + (float)$aRow['total_tax'];
+            $currencyToUse = !empty($aRow['currency_name']) ? $aRow['currency_name'] : $baseCurrency;
+            $row[] = '<span class="tw-font-medium">' . e(app_format_money($grandTotal, $currencyToUse)) . '</span>';
 
-            $row[] = '<span class="tw-font-medium">' . e(app_format_money($aRow['total_tax'], $aRow['currency_name'])) . '</span>';
+            $row[] = '<span class="tw-font-medium">' . e(app_format_money($aRow['total_tax'], $aRow['currency_name'] ? $aRow['currency_name'] : $baseCurrency)) . '</span>';
 
             $row[] = e($aRow['year']);
 

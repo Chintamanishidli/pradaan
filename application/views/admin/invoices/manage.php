@@ -11,7 +11,7 @@
 								<?= _l('invoices'); ?>
 							</h4>
 							<?php if (! isset($project)) { ?>
-							<a href="<?= admin_url('invoices/recurring'); ?>"
+						   	<a href="<?= admin_url('invoices/recurring'); ?>"
 								class="tw-mr-4">
 								<?= _l('invoices_list_recurring'); ?>
 								&rarr;
@@ -36,7 +36,7 @@
 <?php $this->load->view('admin/includes/modals/sales_attach_file'); ?>
 <div id="modal-wrapper"></div>
 <script>
-	var hidden_columns = [2, 6, 7, 8];
+	var hidden_columns = [6, 7, 8];
 </script>
 <?php init_tail(); ?>
 <script>

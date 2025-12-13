@@ -15,8 +15,8 @@ return App_table::find('clients')
             '1',
             db_prefix() . 'clients.userid as userid',
             'company',
-            'CONCAT(firstname, " ", lastname) as fullname',
-            'email',
+            'COALESCE(NULLIF(CONCAT(firstname, " ", lastname), " "), ' . db_prefix() . 'clients.customer_name, "") as fullname',
+            'COALESCE(' . db_prefix() . 'contacts.email, ' . db_prefix() . 'clients.email_address, "") as email',
             db_prefix() . 'clients.phonenumber as phonenumber',
             db_prefix() . 'clients.active',
             '(SELECT GROUP_CONCAT(name SEPARATOR ",") FROM ' . db_prefix() . 'customer_groups JOIN ' . db_prefix() . 'customers_groups ON ' . db_prefix() . 'customer_groups.groupid = ' . db_prefix() . 'customers_groups.id WHERE customer_id = ' . db_prefix() . 'clients.userid ORDER by name ASC) as customerGroups',
@@ -110,11 +110,16 @@ return App_table::find('clients')
 
             $row[] = $company;
 
-            // Primary contact
-            $row[] = ($aRow['contact_id'] ? '<a href="' . admin_url('clients/client/' . $aRow['userid'] . '?contactid=' . $aRow['contact_id']) . '" target="_blank" class="tw-font-medium">' . e(trim($aRow['fullname'])) . '</a>' : '');
+            // Primary contact - show name from contact or client's customer_name
+            if ($aRow['contact_id']) {
+                $row[] = '<a href="' . admin_url('clients/client/' . $aRow['userid'] . '?contactid=' . $aRow['contact_id']) . '" target="_blank" class="tw-font-medium">' . e(trim($aRow['fullname'])) . '</a>';
+            } else {
+                // No primary contact, show customer_name from client if available
+                $row[] = trim($aRow['fullname']) ? '<span class="tw-font-medium">' . e(trim($aRow['fullname'])) . '</span>' : '-';
+            }
 
-            // Primary contact email
-            $row[] = ($aRow['email'] ? '<a href="mailto:' . e($aRow['email']) . '">' . e($aRow['email']) . '</a>' : '');
+            // Primary contact email - show from contact or client's email_address
+            $row[] = ($aRow['email'] ? '<a href="mailto:' . e($aRow['email']) . '">' . e($aRow['email']) . '</a>' : '-');
 
             // Primary contact phone
             $row[] = ($aRow['phonenumber'] ? '<a href="tel:' . e($aRow['phonenumber']) . '">' . e($aRow['phonenumber']) . '</a>' : '');

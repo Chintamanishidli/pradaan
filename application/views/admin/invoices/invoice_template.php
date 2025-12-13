@@ -258,41 +258,42 @@
 <div class="row">
     <div class="col-md-6">
         <?php
-            // Use editable currency field (not disabled)
-            $currency_attr = ['data-show-subtext' => true];
-            $currency_attr = apply_filters_deprecated('invoice_currency_disabled', [$currency_attr], '2.3.0', 'invoice_currency_attributes');
-
-            // Set default selected currency
+            // Currency is locked to INR (Indian Rupee) - non-editable
+            $currency_attr = [
+                'data-show-subtext' => true,
+                'disabled' => true  // Make non-editable
+            ];
+            
+            // Find INR currency ID
             $selected = '';
+            $inr_currency_id = '';
             foreach ($currencies as $currency) {
-                if ($currency['isdefault'] == 1) {
+                // Look for INR currency
+                if (strtoupper($currency['name']) == 'INR' || strtoupper($currency['symbol']) == '₹') {
+                    $inr_currency_id = $currency['id'];
+                    $selected = $currency['id'];
                     $currency_attr['data-base'] = $currency['id'];
-                    $selected = $currency['id']; // Default currency
+                    break;
                 }
-                
-                // If editing invoice, use invoice's currency
-                if (isset($invoice) && $currency['id'] == $invoice->currency) {
+                // Fallback to default currency if INR not found
+                if ($currency['isdefault'] == 1 && empty($selected)) {
+                    $currency_attr['data-base'] = $currency['id'];
                     $selected = $currency['id'];
                 }
             }
             
-            // If no selection yet and we're not editing, use default
-            if (!$selected && !isset($invoice)) {
-                foreach ($currencies as $currency) {
-                    if ($currency['isdefault'] == 1) {
-                        $selected = $currency['id'];
-                        break;
-                    }
-                }
-            }
+            // If editing invoice, still show INR (ignore invoice's currency)
+            // Or if you want to keep existing currency for old invoices, uncomment below:
+            // if (isset($invoice)) { $selected = $invoice->currency; }
             
             $currency_attr = hooks()->apply_filters('invoice_currency_attributes', $currency_attr);
         ?>
         
-        <!-- Currency selector - now editable -->
+        <!-- Currency selector - locked to INR -->
         <?= render_select('currency', $currencies, ['id', 'name', 'symbol'], 'invoice_add_edit_currency', $selected, $currency_attr); ?>
         
-        <!-- DO NOT add a hidden currency field - it will conflict -->
+        <!-- Hidden field to submit currency value since dropdown is disabled -->
+        <input type="hidden" name="currency" value="<?= $selected; ?>">
     </div>
     <div class="col-md-6">
         <?php

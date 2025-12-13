@@ -2,7 +2,7 @@
 
 $table_data = array(
   _l('invoice_dt_table_heading_number'),
-  _l('invoice_dt_table_heading_amount'),
+  'Total Amount',
   _l('invoice_total_tax'),
   array(
     'name'=>_l('invoice_estimate_year'),

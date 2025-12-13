@@ -523,6 +523,9 @@ class Invoices_model extends App_Model
 
             update_sales_total_tax_column($insert_id, 'invoice', db_prefix() . 'invoices');
 
+            // Recalculate subtotal and total after items are added
+            $this->recalculate_invoice_totals($insert_id);
+
             if (!DEFINED('CRON') && $expense == false) {
                 $lang_key = 'invoice_activity_created';
             } elseif (!DEFINED('CRON') && $expense == true) {
@@ -906,6 +909,8 @@ class Invoices_model extends App_Model
 
         if ($updated) {
             update_sales_total_tax_column($id, 'invoice', db_prefix() . 'invoices');
+            // Recalculate subtotal and total after items are updated
+            $this->recalculate_invoice_totals($id);
             update_invoice_status($id);
         }
 
@@ -1897,6 +1902,59 @@ class Invoices_model extends App_Model
     {
         return $this->clients_model->get_contacts($client_id, [
             'active' => 1, 'invoice_emails' => 1,
+        ]);
+    }
+
+    /**
+     * Recalculate invoice subtotal and total from line items
+     *
+     * @param  int $id Invoice ID
+     * @return void
+     */
+    public function recalculate_invoice_totals($id)
+    {
+        // Get all items for this invoice
+        $this->db->select('id, qty, rate');
+        $this->db->where('rel_id', $id);
+        $this->db->where('rel_type', 'invoice');
+        $items = $this->db->get(db_prefix() . 'itemable')->result_array();
+
+        // Calculate subtotal from items (sum of qty * rate)
+        $subtotal = 0;
+        foreach ($items as $item) {
+            $subtotal += (float)$item['qty'] * (float)$item['rate'];
+        }
+
+        // Get the invoice discount and tax info
+        $this->db->select('discount_percent, discount_total, discount_type, adjustment, total_tax');
+        $this->db->where('id', $id);
+        $invoice = $this->db->get(db_prefix() . 'invoices')->row();
+
+        // Calculate discount
+        $discount = 0;
+        if ($invoice->discount_percent > 0) {
+            $discount = ($subtotal * $invoice->discount_percent) / 100;
+        } elseif ($invoice->discount_total > 0) {
+            $discount = $invoice->discount_total;
+        }
+
+        // Get total_tax (already calculated by update_sales_total_tax_column)
+        $total_tax = (float)$invoice->total_tax;
+
+        // Calculate total based on discount type
+        if ($invoice->discount_type == 'before_tax') {
+            // Discount applied before tax: subtotal - discount + tax + adjustment
+            $total = $subtotal - $discount + $total_tax + (float)$invoice->adjustment;
+        } else {
+            // Discount applied after tax: subtotal + tax - discount + adjustment
+            $total = $subtotal + $total_tax - $discount + (float)$invoice->adjustment;
+        }
+
+        // Update the invoice with calculated values
+        $this->db->where('id', $id);
+        $this->db->update(db_prefix() . 'invoices', [
+            'subtotal' => $subtotal,
+            'total'    => $total,
         ]);
     }
 }
